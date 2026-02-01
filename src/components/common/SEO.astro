@@ -24,8 +24,8 @@ const fullTitle = title.includes('ZDentistry') ? title : `${title} | ZDentistry 
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
 const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
 
-// Default keywords optimized for "near me" searches
-const defaultKeywords = 'dentist near me, dental clinic near me, best dentist Cuttack, dental clinic Cuttack, dentist Cuttack, dental hospital Cuttack, teeth doctor Cuttack, maxillofacial surgeon Cuttack, dental implants Cuttack, emergency dentist Cuttack, cosmetic dentistry Cuttack, teeth whitening Cuttack, root canal Cuttack, dental clinic Odisha, dentist Bhubaneswar, Dr Zuben Mohanty, ZDentistry, CDA Sector 9 dentist';
+// Default keywords optimized for target search terms
+const defaultKeywords = 'dentist near me, dental clinic near me, best dental clinic in cuttack, best dentist in cuttack, dental clinic cuttack, best dentist in cda cuttack, 5 best dentist in cuttack, top dentist cuttack, dental hospital Cuttack, teeth doctor Cuttack, maxillofacial surgeon Cuttack, dental implants Cuttack, emergency dentist Cuttack, cosmetic dentistry Cuttack, teeth whitening Cuttack, root canal Cuttack, dental clinic Odisha, dentist Bhubaneswar, Dr Zuben Mohanty, ZDentistry, CDA Sector 9 dentist, best dental clinic cda, dentist cda sector 9';
 const metaKeywords = keywords || defaultKeywords;
 ---
 

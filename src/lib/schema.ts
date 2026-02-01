@@ -30,9 +30,9 @@ export interface BusinessInfo {
 }
 
 export const businessInfo: BusinessInfo = {
-  name: 'ZDentistry: A House of Dental & Maxillofacial Surgery',
-  alternateName: 'ZDentistry Cuttack',
-  description: 'Best dental clinic in Cuttack, Odisha. ZDentistry offers comprehensive dental and maxillofacial surgery services including dental implants, cosmetic dentistry, emergency dental care, and oral surgery. Expert care by Dr. Zuben Mohanty, M.D.S.',
+  name: 'ZDentistry - Best Dental Clinic in Cuttack | Dentist Near You',
+  alternateName: 'ZDentistry Cuttack, Best Dentist CDA Cuttack',
+  description: 'Looking for the best dentist in Cuttack? ZDentistry is the #1 rated dental clinic in CDA Sector-9, Cuttack. Expert dental care including dental implants, cosmetic dentistry, emergency dental & maxillofacial surgery by Dr. Zuben Mohanty (MDS). Top 5 best dentist in Cuttack. Call +91 89844 89929.',
   url: 'https://zdentistry.in',
   telephone: ['+918984489929', '+918984469929'],
   email: 'contact@zdentistry.in',
@@ -58,6 +58,10 @@ export const businessInfo: BusinessInfo = {
     'Cuttack',
     'Bhubaneswar',
     'CDA Sector 9',
+    'CDA Sector 6',
+    'CDA Sector 7',
+    'CDA Sector 8',
+    'CDA Sector 10',
     'CDA Cuttack',
     'Bidanasi',
     'Madhupatna',
@@ -65,6 +69,13 @@ export const businessInfo: BusinessInfo = {
     'College Square',
     'Ranihat',
     'Chauliaganj',
+    'Jobra',
+    'Tulsipur',
+    'Cantonment Road',
+    'Khan Nagar',
+    'Malgodown',
+    'Shelter Chhak',
+    'Link Road Cuttack',
     'Odisha',
   ],
   foundingDate: '2020',
@@ -230,8 +241,11 @@ export function generateLocalBusinessSchema() {
         },
       ],
     },
-    // Keywords for search engines
-    keywords: 'dentist near me, dental clinic Cuttack, best dentist Cuttack, dental implants Odisha, maxillofacial surgeon Cuttack, emergency dentist Cuttack, teeth whitening Cuttack',
+    // Keywords for search engines - targeting top search terms
+    keywords: 'dentist near me, dental clinic near me, best dental clinic in cuttack, best dentist in cuttack, dental clinic cuttack, best dentist in cda cuttack, 5 best dentist in cuttack, top dentist cuttack, dental implants Cuttack, maxillofacial surgeon Cuttack, emergency dentist Cuttack',
+    // Additional names for search
+    additionalType: 'http://www.productontology.org/id/Dentistry',
+    slogan: 'Best Dental Clinic in Cuttack - Your Trusted Dentist Near You',
   };
 }
 

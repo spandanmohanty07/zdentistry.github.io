@@ -20,9 +20,9 @@ const maxillofacialTreatments = allTreatments
 const testimonials = await getCollection('testimonials');
 const sortedTestimonials = testimonials.sort((a, b) => a.data.order - b.data.order);
 
-// SEO-optimized for "dental clinic near me" searches
-const title = "Best Dental Clinic in Cuttack | ZDentistry - Dentist Near You";
-const description = "Looking for a dentist near you in Cuttack? ZDentistry offers expert dental care including dental implants, cosmetic dentistry, emergency dental services & maxillofacial surgery. Book appointment now! Call +91 89844 89929.";
+// SEO-optimized for target keywords
+const title = "Best Dentist in Cuttack | #1 Dental Clinic Near You | ZDentistry CDA";
+const description = "Looking for the best dentist near you in Cuttack? ZDentistry is the top-rated dental clinic in CDA Sector-9, Cuttack. Expert dental implants, cosmetic dentistry & maxillofacial surgery. ⭐ 4.9/5 Rating. Book now: +91 89844 89929";
 
 // Generate review schema from testimonials
 const reviewData = sortedTestimonials.map(t => ({
@@ -40,6 +40,59 @@ const reviewSchema = generateReviewSchema(reviewData);
   structuredData={[aggregateRatingSchema, reviewSchema]}
 >
   <Hero />
+
+  <!-- Why Best Dental Clinic Section - SEO optimized -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          Why ZDentistry is the <span class="text-primary">Best Dental Clinic in Cuttack</span>
+        </h2>
+        <p class="text-secondary-600 max-w-3xl mx-auto">
+          When you search for "dentist near me" or "best dentist in Cuttack", you deserve a dental clinic that truly delivers excellence. Here's why patients across Cuttack, CDA, and Bhubaneswar choose ZDentistry.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center p-6 rounded-xl bg-gray-50">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Expert MDS Dentist</h3>
+          <p class="text-secondary-600 text-sm">Dr. Zuben Mohanty, qualified Oral & Maxillofacial Surgeon with years of experience</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-gray-50">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Modern Equipment</h3>
+          <p class="text-secondary-600 text-sm">State-of-the-art dental technology for painless & precise treatments</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-gray-50">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Prime Location</h3>
+          <p class="text-secondary-600 text-sm">Conveniently located in CDA Sector-9, easily accessible from all areas of Cuttack</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-gray-50">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Affordable Prices</h3>
+          <p class="text-secondary-600 text-sm">Quality dental care at reasonable prices with transparent billing</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- About Section -->
   <section class="section bg-white">
