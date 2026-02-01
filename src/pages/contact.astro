@@ -132,7 +132,6 @@ const services = [
             id="contact-form"
             name="contact"
             method="POST"
-            action="/contact-success/"
             data-netlify="true"
             netlify-honeypot="bot-field"
             class="space-y-6"
@@ -262,37 +261,79 @@ const services = [
           // Set timestamp when page loads (bot detection)
           document.getElementById('form-timestamp').value = Date.now().toString();
 
-          // Form validation
+          // Form submission handler
           const form = document.getElementById('contact-form');
           const errorDiv = document.getElementById('form-error');
           const submitBtn = document.getElementById('submit-btn');
 
-          form?.addEventListener('submit', function(e) {
+          form?.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
             const timestamp = parseInt(document.getElementById('form-timestamp').value);
             const now = Date.now();
 
             // Check if form was submitted too quickly (bot behavior)
             if (now - timestamp < 3000) {
-              e.preventDefault();
               errorDiv.textContent = 'Please wait a moment before submitting.';
               errorDiv.classList.remove('hidden');
-              return false;
+              return;
             }
 
             // Basic XSS prevention - check for script tags in inputs
             const inputs = form.querySelectorAll('input, textarea');
             for (const input of inputs) {
               if (/<script|javascript:|on\w+=/i.test(input.value)) {
-                e.preventDefault();
                 errorDiv.textContent = 'Invalid characters detected. Please remove any special code.';
                 errorDiv.classList.remove('hidden');
-                return false;
+                return;
               }
             }
 
             // Disable button to prevent double submission
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
+            errorDiv.classList.add('hidden');
+
+            try {
+              const formData = new FormData(form);
+
+              // Submit to Netlify Forms
+              const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+              });
+
+              if (response.ok) {
+                // Also send WhatsApp notification via serverless function
+                try {
+                  await fetch('/.netlify/functions/notify-whatsapp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      name: formData.get('name'),
+                      phone: formData.get('phone'),
+                      email: formData.get('email'),
+                      service: formData.get('service'),
+                      message: formData.get('message')
+                    })
+                  });
+                } catch (whatsappErr) {
+                  // WhatsApp notification is optional, don't block success
+                  console.log('WhatsApp notification skipped');
+                }
+
+                // Redirect to success page
+                window.location.href = '/contact-success/';
+              } else {
+                throw new Error('Form submission failed');
+              }
+            } catch (error) {
+              errorDiv.textContent = 'Something went wrong. Please try again or call us directly.';
+              errorDiv.classList.remove('hidden');
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Message';
+            }
           });
         </script>
       </div>

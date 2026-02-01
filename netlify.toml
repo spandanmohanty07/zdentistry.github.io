@@ -18,17 +18,8 @@
   status = 301
   force = true
 
-# Redirect trailing slashes (ensure consistency)
-[[redirects]]
-  from = "/*/"
-  to = "/:splat"
-  status = 200
-
-# 404 fallback
-[[redirects]]
-  from = "/*"
-  to = "/404/"
-  status = 404
+# 404 fallback - only for pages that don't exist
+# Note: Removed trailing slash redirect as it conflicts with Astro's directory format
 
 # ============================================
 # SECURITY HEADERS
