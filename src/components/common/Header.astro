@@ -1,0 +1,243 @@
+---
+const navLinks = [
+  {
+    label: 'Treatments',
+    href: '/treatments/',
+    hasDropdown: true,
+    dropdownItems: {
+      dentistry: [
+        { label: 'Dental Check-up and Clean', href: '/treatments/dentistry/dental-checkup/' },
+        { label: 'Tooth Fillings', href: '/treatments/dentistry/tooth-fillings/' },
+        { label: 'Cosmetic Dentistry', href: '/treatments/dentistry/cosmetic-dentistry/' },
+        { label: "Children's Dentistry", href: '/treatments/dentistry/childrens-dentistry/' },
+        { label: 'Emergency Dental', href: '/treatments/dentistry/emergency-dental/' },
+        { label: 'Dental Implants', href: '/treatments/dentistry/dental-implants/' },
+      ],
+      maxillofacial: [
+        { label: 'Maxillofacial Trauma', href: '/treatments/maxillofacial/trauma/' },
+        { label: 'Oral Cancer Screening', href: '/treatments/maxillofacial/oral-cancer/' },
+        { label: 'Jaw/Neck Swellings', href: '/treatments/maxillofacial/swellings/' },
+        { label: 'Advanced Implant Surgery', href: '/treatments/maxillofacial/advanced-implants/' },
+        { label: 'Facial Cosmetic Surgery', href: '/treatments/maxillofacial/facial-cosmetic/' },
+        { label: 'TMJ Disorders', href: '/treatments/maxillofacial/tmj-disorders/' },
+      ],
+    },
+  },
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+  <div class="container-custom">
+    <nav class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0">
+        <img src="/logo.svg" alt="ZDentistry Logo" class="h-12 w-auto" />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <div class="relative group">
+            {link.hasDropdown ? (
+              <>
+                <button
+                  class={`flex items-center gap-1 font-medium py-2 transition-colors ${
+                    currentPath.startsWith('/treatments') ? 'text-primary' : 'text-gray-700 hover:text-primary'
+                  }`}
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  {link.label}
+                  <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <!-- Dropdown -->
+                <div class="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div class="bg-white rounded-2xl shadow-xl p-6 min-w-[600px] border border-gray-100">
+                    <div class="grid grid-cols-2 gap-8">
+                      <div>
+                        <h3 class="font-semibold text-primary mb-3">Dentistry</h3>
+                        <ul class="space-y-2">
+                          {link.dropdownItems?.dentistry.map((item) => (
+                            <li>
+                              <a
+                                href={item.href}
+                                class="text-gray-600 hover:text-primary transition-colors block py-1"
+                              >
+                                {item.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h3 class="font-semibold text-primary mb-3">Maxillofacial Surgery</h3>
+                        <ul class="space-y-2">
+                          {link.dropdownItems?.maxillofacial.map((item) => (
+                            <li>
+                              <a
+                                href={item.href}
+                                class="text-gray-600 hover:text-primary transition-colors block py-1"
+                              >
+                                {item.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-gray-100">
+                      <a href="/treatments/" class="link-arrow text-sm">
+                        View all treatments
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <a
+                href={link.href}
+                class={`font-medium py-2 transition-colors ${
+                  currentPath === link.href ? 'text-primary' : 'text-gray-700 hover:text-primary'
+                }`}
+              >
+                {link.label}
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA Button (Desktop) -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="tel:+918984489929" class="text-sm font-medium text-gray-600 hover:text-primary">
+          +91 89844 89929
+        </a>
+        <a href="/book-appointment/" class="btn-primary text-sm">
+          Book Appointment
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        class="lg:hidden p-2 text-gray-600 hover:text-primary"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6 menu-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="w-6 h-6 menu-close hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100">
+    <div class="container-custom py-4">
+      <nav class="space-y-4">
+        {navLinks.map((link) => (
+          <div>
+            {link.hasDropdown ? (
+              <div class="mobile-dropdown">
+                <button
+                  class="flex items-center justify-between w-full font-medium text-gray-700 py-2"
+                  aria-expanded="false"
+                >
+                  {link.label}
+                  <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="hidden pl-4 mt-2 space-y-4">
+                  <div>
+                    <h4 class="text-sm font-semibold text-primary mb-2">Dentistry</h4>
+                    <ul class="space-y-2">
+                      {link.dropdownItems?.dentistry.map((item) => (
+                        <li>
+                          <a href={item.href} class="text-sm text-gray-600 hover:text-primary block py-1">
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-semibold text-primary mb-2">Maxillofacial Surgery</h4>
+                    <ul class="space-y-2">
+                      {link.dropdownItems?.maxillofacial.map((item) => (
+                        <li>
+                          <a href={item.href} class="text-sm text-gray-600 hover:text-primary block py-1">
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a
+                href={link.href}
+                class={`block font-medium py-2 ${
+                  currentPath === link.href ? 'text-primary' : 'text-gray-700 hover:text-primary'
+                }`}
+              >
+                {link.label}
+              </a>
+            )}
+          </div>
+        ))}
+
+        <div class="pt-4 border-t border-gray-100 space-y-3">
+          <a href="tel:+918984489929" class="block text-center font-medium text-gray-700">
+            +91 89844 89929
+          </a>
+          <a href="/book-appointment/" class="btn-primary w-full text-center">
+            Book Appointment
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuOpenIcon = menuButton?.querySelector('.menu-open');
+  const menuCloseIcon = menuButton?.querySelector('.menu-close');
+
+  menuButton?.addEventListener('click', () => {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', String(!isExpanded));
+    mobileMenu?.classList.toggle('hidden');
+    menuOpenIcon?.classList.toggle('hidden');
+    menuCloseIcon?.classList.toggle('hidden');
+  });
+
+  // Mobile dropdown toggles
+  const mobileDropdowns = document.querySelectorAll('.mobile-dropdown button');
+  mobileDropdowns.forEach((button) => {
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!isExpanded));
+      const dropdown = button.nextElementSibling;
+      dropdown?.classList.toggle('hidden');
+      const icon = button.querySelector('svg');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+</script>

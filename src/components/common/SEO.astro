@@ -1,0 +1,83 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article' | 'product';
+  noindex?: boolean;
+  keywords?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/images/clinic-1.png',
+  canonical,
+  type = 'website',
+  noindex = false,
+  keywords,
+} = Astro.props;
+
+const siteUrl = 'https://zdentistry.in';
+const fullTitle = title.includes('ZDentistry') ? title : `${title} | ZDentistry Cuttack`;
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
+
+// Default keywords optimized for "near me" searches
+const defaultKeywords = 'dentist near me, dental clinic near me, best dentist Cuttack, dental clinic Cuttack, dentist Cuttack, dental hospital Cuttack, teeth doctor Cuttack, maxillofacial surgeon Cuttack, dental implants Cuttack, emergency dentist Cuttack, cosmetic dentistry Cuttack, teeth whitening Cuttack, root canal Cuttack, dental clinic Odisha, dentist Bhubaneswar, Dr Zuben Mohanty, ZDentistry, CDA Sector 9 dentist';
+const metaKeywords = keywords || defaultKeywords;
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="ZDentistry - Dental Clinic in Cuttack" />
+<meta property="og:locale" content="en_IN" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<!-- Geo Meta Tags for Local SEO - Critical for "near me" searches -->
+<meta name="geo.region" content="IN-OR" />
+<meta name="geo.placename" content="Cuttack, Odisha" />
+<meta name="geo.position" content="20.4625;85.8830" />
+<meta name="ICBM" content="20.4625, 85.8830" />
+
+<!-- Additional Local SEO Meta Tags -->
+<meta name="city" content="Cuttack" />
+<meta name="state" content="Odisha" />
+<meta name="country" content="India" />
+<meta name="zipcode" content="753014" />
+
+<!-- Business Contact Info -->
+<meta name="contact" content="+91 89844 89929" />
+<meta name="reply-to" content="contact@zdentistry.in" />
+
+<!-- Additional SEO -->
+<meta name="author" content="Dr. Zuben Mohanty - ZDentistry" />
+<meta name="keywords" content={metaKeywords} />
+<meta name="classification" content="Dental Clinic, Healthcare" />
+<meta name="category" content="Dental Services" />
+<meta name="coverage" content="Cuttack, Bhubaneswar, Odisha, India" />
+<meta name="distribution" content="local" />
+<meta name="rating" content="general" />
+<meta name="revisit-after" content="7 days" />

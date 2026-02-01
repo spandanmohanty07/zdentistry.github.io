@@ -1,0 +1,88 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import TreatmentCard from '@/components/home/TreatmentCard.astro';
+import CTASection from '@/components/home/CTASection.astro';
+import { getCollection } from 'astro:content';
+
+const allTreatments = await getCollection('treatments');
+const dentistryTreatments = allTreatments
+  .filter(t => t.data.category === 'dentistry')
+  .sort((a, b) => a.data.order - b.data.order);
+const maxillofacialTreatments = allTreatments
+  .filter(t => t.data.category === 'maxillofacial')
+  .sort((a, b) => a.data.order - b.data.order);
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://zdentistry.in' },
+  { name: 'Treatments', url: 'https://zdentistry.in/treatments/' },
+];
+---
+
+<PageLayout
+  title="Our Treatments"
+  description="Explore our comprehensive range of dental and maxillofacial surgery treatments at ZDentistry, Cuttack. From routine check-ups to advanced surgical procedures."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-secondary-900">
+        Our <span class="text-primary">Treatments</span>
+      </h1>
+      <p class="text-lg text-secondary-600 mt-4 max-w-2xl mx-auto">
+        ZDentistry offers a comprehensive range of dental and maxillofacial surgery services.
+        Our expert team is dedicated to providing the highest quality care for all your oral health needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- Dentistry Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          Dentistry
+        </h2>
+        <p class="text-secondary-600 max-w-2xl mx-auto">
+          From routine check-ups to cosmetic treatments, our dental services help you maintain
+          a healthy, beautiful smile.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {dentistryTreatments.map((treatment) => (
+          <TreatmentCard
+            title={treatment.data.title}
+            description={treatment.data.shortDescription}
+            href={`/treatments/dentistry/${treatment.slug.split('/').pop()}/`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Maxillofacial Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          Maxillofacial Surgery
+        </h2>
+        <p class="text-secondary-600 max-w-2xl mx-auto">
+          Dr. Zuben's expertise in oral and maxillofacial surgery enables us to treat complex
+          conditions affecting the face, jaw, and mouth.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {maxillofacialTreatments.map((treatment) => (
+          <TreatmentCard
+            title={treatment.data.title}
+            description={treatment.data.shortDescription}
+            href={`/treatments/maxillofacial/${treatment.slug.split('/').pop()}/`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</PageLayout>

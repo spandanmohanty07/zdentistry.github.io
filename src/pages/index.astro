@@ -1,0 +1,193 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/home/Hero.astro';
+import TreatmentCard from '@/components/home/TreatmentCard.astro';
+import TestimonialCard from '@/components/home/TestimonialCard.astro';
+import CTASection from '@/components/home/CTASection.astro';
+import { getCollection } from 'astro:content';
+import { generateAggregateRatingSchema, generateReviewSchema } from '@/lib/schema';
+
+// Get treatments
+const allTreatments = await getCollection('treatments');
+const dentistryTreatments = allTreatments
+  .filter(t => t.data.category === 'dentistry')
+  .sort((a, b) => a.data.order - b.data.order);
+const maxillofacialTreatments = allTreatments
+  .filter(t => t.data.category === 'maxillofacial')
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Get testimonials
+const testimonials = await getCollection('testimonials');
+const sortedTestimonials = testimonials.sort((a, b) => a.data.order - b.data.order);
+
+// SEO-optimized for "dental clinic near me" searches
+const title = "Best Dental Clinic in Cuttack | ZDentistry - Dentist Near You";
+const description = "Looking for a dentist near you in Cuttack? ZDentistry offers expert dental care including dental implants, cosmetic dentistry, emergency dental services & maxillofacial surgery. Book appointment now! Call +91 89844 89929.";
+
+// Generate review schema from testimonials
+const reviewData = sortedTestimonials.map(t => ({
+  author: t.data.name,
+  text: t.data.text,
+  rating: 5,
+}));
+const aggregateRatingSchema = generateAggregateRatingSchema();
+const reviewSchema = generateReviewSchema(reviewData);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  structuredData={[aggregateRatingSchema, reviewSchema]}
+>
+  <Hero />
+
+  <!-- About Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="/images/clinic-2.png"
+              alt="ZDentistry clinic interior with modern equipment and blue cabinets"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
+          <p class="text-lg text-secondary-600 italic mt-6">
+            "Eliminate the Unknown - Trust in Our Professional Dental Care for a Stress-Free Visit"
+          </p>
+        </div>
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
+            Dental Care That Feels Like Catching Up With an Old Friend
+          </h2>
+          <p class="text-secondary-600 mb-4">
+            At ZDentistry, we prioritize patient satisfaction and provide exceptional dental care in a warm and welcoming environment. Our team is committed to understanding our patients' needs and concerns, delivering quality dental services, and staying up-to-date with the latest advancements in dentistry.
+          </p>
+          <p class="text-secondary-600 mb-6">
+            We strive to establish a professional relationship built on trust and mutual respect, and our dedication to providing a personalized, professional approach to dental care sets us apart.
+          </p>
+          <p class="font-semibold text-secondary-900">
+            Choose ZDentistry for your family's dental needs and leave our office feeling confident and satisfied with your care!
+          </p>
+          <a href="/about/" class="btn-outline mt-6 inline-block">
+            Learn More About Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900">
+          What Our Friendly Patients Have to Say
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {sortedTestimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.data.name}
+            role={testimonial.data.role}
+            location={testimonial.data.location}
+            text={testimonial.data.text}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <div class="rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="/images/clinic-1.png"
+              alt="Modern dental treatment room at ZDentistry"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
+            <span class="text-primary">Experience matters,</span><br />
+            and so do you
+          </h2>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p class="text-secondary-600">Put your dental health in experienced hands</p>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p class="text-secondary-600">Book the kids in at the same time as you for real convenience</p>
+            </div>
+          </div>
+          <a href="tel:+918984489929" class="btn-secondary mt-8 inline-block">
+            Reach us @ +91 89844 89929
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dentistry Treatments Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-4">
+          Our Treatments
+        </h2>
+        <h3 class="text-2xl font-display text-primary">Dentistry</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {dentistryTreatments.map((treatment) => (
+          <TreatmentCard
+            title={treatment.data.title}
+            description={treatment.data.shortDescription}
+            href={`/treatments/dentistry/${treatment.slug.split('/').pop()}/`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Maxillofacial Treatments Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h3 class="text-2xl font-display text-primary">Maxillofacial Surgery</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {maxillofacialTreatments.map((treatment) => (
+          <TreatmentCard
+            title={treatment.data.title}
+            description={treatment.data.shortDescription}
+            href={`/treatments/maxillofacial/${treatment.slug.split('/').pop()}/`}
+          />
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/treatments/" class="btn-outline">
+          View All Treatments
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

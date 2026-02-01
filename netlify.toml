@@ -1,0 +1,175 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Redirects for old URLs
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about/"
+  status = 301
+  force = true
+
+# Redirect trailing slashes (ensure consistency)
+[[redirects]]
+  from = "/*/"
+  to = "/:splat"
+  status = 200
+
+# 404 fallback
+[[redirects]]
+  from = "/*"
+  to = "/404/"
+  status = 404
+
+# ============================================
+# SECURITY HEADERS
+# ============================================
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Prevent clickjacking attacks
+    X-Frame-Options = "SAMEORIGIN"
+
+    # Enable browser XSS protection
+    X-XSS-Protection = "1; mode=block"
+
+    # Prevent MIME type sniffing
+    X-Content-Type-Options = "nosniff"
+
+    # Control referrer information
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Content Security Policy - Controls what resources can be loaded
+    # Allows: Google Fonts, Google Maps, Calendly, WhatsApp, Netlify Forms
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' https://assets.calendly.com https://www.google.com https://www.gstatic.com https://maps.googleapis.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com;
+      font-src 'self' https://fonts.gstatic.com data:;
+      img-src 'self' data: https: blob:;
+      frame-src 'self' https://www.google.com https://maps.google.com https://calendly.com https://www.youtube.com;
+      connect-src 'self' https://api.calendly.com https://www.google-analytics.com;
+      form-action 'self' https://netlify.com;
+      base-uri 'self';
+      object-src 'none';
+      frame-ancestors 'self';
+      upgrade-insecure-requests;
+    """
+
+    # Permissions Policy - Control browser features
+    Permissions-Policy = """
+      accelerometer=(),
+      autoplay=(),
+      camera=(),
+      cross-origin-isolated=(),
+      display-capture=(),
+      encrypted-media=(),
+      fullscreen=(self),
+      geolocation=(self),
+      gyroscope=(),
+      keyboard-map=(),
+      magnetometer=(),
+      microphone=(),
+      midi=(),
+      payment=(),
+      picture-in-picture=(),
+      publickey-credentials-get=(),
+      screen-wake-lock=(),
+      sync-xhr=(self),
+      usb=(),
+      xr-spatial-tracking=()
+    """
+
+    # Strict Transport Security - Force HTTPS (2 years)
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+    # Prevent information leakage
+    X-Permitted-Cross-Domain-Policies = "none"
+
+    # Cross-Origin policies
+    Cross-Origin-Embedder-Policy = "unsafe-none"
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    Cross-Origin-Resource-Policy = "same-origin"
+
+# ============================================
+# CACHE HEADERS FOR PERFORMANCE
+# ============================================
+
+# Static assets - Long cache (1 year)
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Astro generated assets - Immutable cache
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# HTML pages - Short cache with revalidation
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Sitemap and robots - Medium cache
+[[headers]]
+  for = "/sitemap*.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# ============================================
+# NETLIFY FORMS PROCESSING
+# ============================================
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true

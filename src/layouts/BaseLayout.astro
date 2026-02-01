@@ -1,0 +1,84 @@
+---
+import SEO from '@/components/common/SEO.astro';
+import Header from '@/components/common/Header.astro';
+import Footer from '@/components/common/Footer.astro';
+import CookieBanner from '@/components/common/CookieBanner.astro';
+import WhatsAppButton from '@/components/common/WhatsAppButton.astro';
+import { generateLocalBusinessSchema } from '@/lib/schema';
+import '@/styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article' | 'product';
+  noindex?: boolean;
+  structuredData?: object | object[];
+}
+
+const {
+  title,
+  description,
+  image,
+  canonical,
+  type = 'website',
+  noindex = false,
+  structuredData,
+} = Astro.props;
+
+const localBusinessSchema = generateLocalBusinessSchema();
+const allStructuredData = structuredData
+  ? Array.isArray(structuredData)
+    ? [localBusinessSchema, ...structuredData]
+    : [localBusinessSchema, structuredData]
+  : [localBusinessSchema];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="apple-touch-icon" href="/logo.svg" />
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      canonical={canonical}
+      type={type}
+      noindex={noindex}
+    />
+
+    <!-- Ahrefs Site Verification -->
+    <meta name="ahrefs-site-verification" content="45b8dafd52ac38b3722908c6b371ca7664f46ee2ef8e45f0fb6a180b1afe28a3" />
+
+    <!-- Structured Data -->
+    {allStructuredData.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header />
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <Footer />
+    <CookieBanner />
+    <WhatsAppButton />
+  </body>
+</html>

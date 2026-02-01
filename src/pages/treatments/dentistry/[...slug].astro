@@ -1,0 +1,104 @@
+---
+import TreatmentLayout from '@/layouts/TreatmentLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const treatments = await getCollection('treatments', ({ data }) => data.category === 'dentistry');
+
+  return treatments.map((treatment) => {
+    const slug = treatment.slug.split('/').pop();
+    return {
+      params: { slug },
+      props: { treatment },
+    };
+  });
+}
+
+const { treatment } = Astro.props;
+const { Content } = await treatment.render();
+
+// Get related treatments
+const allTreatments = await getCollection('treatments');
+const relatedSlugs = treatment.data.relatedTreatments || [];
+const relatedTreatments = relatedSlugs.map(slug => {
+  const found = allTreatments.find(t => t.slug.endsWith(slug));
+  if (found) {
+    return {
+      title: found.data.title,
+      slug: found.slug.split('/').pop()!,
+      category: found.data.category,
+    };
+  }
+  return null;
+}).filter(Boolean) as { title: string; slug: string; category: string }[];
+---
+
+<TreatmentLayout
+  title={treatment.data.title}
+  description={treatment.data.description}
+  category="dentistry"
+  categoryLabel="Dentistry"
+  faqs={treatment.data.faqs}
+  relatedTreatments={relatedTreatments}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-5xl font-bold text-secondary-900">
+          {treatment.data.title}
+        </h1>
+        <p class="text-xl text-secondary-600 mt-6">
+          {treatment.data.description}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <a href="/book-appointment/" class="btn-primary">
+            Book Appointment
+          </a>
+          <a href="tel:+918984489929" class="btn-outline">
+            Call: +91 89844 89929
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <article class="prose prose-lg max-w-4xl mx-auto">
+        <Content />
+      </article>
+    </div>
+  </section>
+</TreatmentLayout>
+
+<style is:global>
+  .prose h2 {
+    @apply text-2xl md:text-3xl font-bold text-secondary-900 mt-12 mb-6;
+  }
+
+  .prose h3 {
+    @apply text-xl md:text-2xl font-semibold text-secondary-900 mt-8 mb-4;
+  }
+
+  .prose p {
+    @apply text-secondary-600 leading-relaxed mb-4;
+  }
+
+  .prose ul, .prose ol {
+    @apply text-secondary-600 mb-6 pl-6;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose strong {
+    @apply text-secondary-900 font-semibold;
+  }
+
+  .prose a {
+    @apply text-primary hover:text-primary-600;
+  }
+</style>

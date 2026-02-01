@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://zdentistry.in/sitemap-index.xml
+
+# Disallow admin/sensitive paths
+Disallow: /admin/
+Disallow: /api/

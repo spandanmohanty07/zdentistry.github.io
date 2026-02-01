@@ -1,0 +1,22 @@
+# ZDentistry Security Policy
+# https://securitytxt.org/
+
+# Contact for security issues
+Contact: mailto:contact@zdentistry.in
+Contact: tel:+918984489929
+
+# Preferred language
+Preferred-Languages: en, hi
+
+# Security policy page (optional - create if needed)
+# Policy: https://zdentistry.in/security-policy/
+
+# Acknowledgments page (optional)
+# Acknowledgments: https://zdentistry.in/security-thanks/
+
+# Expiry date - update annually
+Expires: 2027-02-01T00:00:00.000Z
+
+# This site is a static website hosted on Netlify
+# No user data is stored on our servers
+# Form submissions are handled by Netlify Forms

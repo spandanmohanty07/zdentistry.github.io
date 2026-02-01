@@ -1,0 +1,316 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://zdentistry.in' },
+  { name: 'Contact', url: 'https://zdentistry.in/contact/' },
+];
+
+const services = [
+  'Dental Check-up',
+  'Tooth Fillings',
+  'Cosmetic Dentistry',
+  "Children's Dentistry",
+  'Emergency Dental',
+  'Dental Implants',
+  'Maxillofacial Trauma',
+  'Oral Cancer Screening',
+  'TMJ Disorders',
+  'Other',
+];
+---
+
+<PageLayout
+  title="Contact Us"
+  description="Get in touch with ZDentistry. Book an appointment, ask questions, or visit our clinic in CDA Sector-9, Cuttack, Odisha."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-secondary-900">
+        Contact <span class="text-primary">Us</span>
+      </h1>
+      <p class="text-lg text-secondary-600 mt-4 max-w-2xl mx-auto">
+        Have questions or ready to book an appointment? We'd love to hear from you.
+        Reach out to us using any of the methods below.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Info + Form Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Contact Information -->
+        <div>
+          <h2 class="text-2xl font-bold text-secondary-900 mb-6">Get in Touch</h2>
+
+          <!-- Phone -->
+          <div class="mb-8">
+            <h3 class="font-semibold text-secondary-900 mb-2">Phone</h3>
+            <div class="space-y-2">
+              <a href="tel:+918984489929" class="flex items-center gap-3 text-secondary-600 hover:text-primary transition-colors">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +91 89844 89929
+              </a>
+              <a href="tel:+918984469929" class="flex items-center gap-3 text-secondary-600 hover:text-primary transition-colors">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +91 89844 69929
+              </a>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="mb-8">
+            <h3 class="font-semibold text-secondary-900 mb-2">WhatsApp</h3>
+            <a
+              href="https://wa.me/918984489929?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment%20at%20ZDentistry."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+
+          <!-- Address -->
+          <div class="mb-8">
+            <h3 class="font-semibold text-secondary-900 mb-2">Address</h3>
+            <address class="not-italic text-secondary-600 flex items-start gap-3">
+              <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>
+                ZDentistry<br />
+                2B / 109, Near Jugal Kishore Park<br />
+                CDA Sector-9, Cuttack<br />
+                Odisha 753014, India
+              </span>
+            </address>
+          </div>
+
+          <!-- Business Hours -->
+          <div class="mb-8">
+            <h3 class="font-semibold text-secondary-900 mb-2">Business Hours</h3>
+            <div class="text-secondary-600 space-y-2">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p><strong>Monday - Saturday</strong></p>
+                  <p>10:00 AM - 2:00 PM</p>
+                  <p>5:00 PM - 9:00 PM</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p><strong>Sunday</strong></p>
+                  <p>10:00 AM - 2:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-2xl font-bold text-secondary-900 mb-6">Send Us a Message</h2>
+          <form
+            id="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="space-y-6"
+          >
+            <!-- Honeypot field for spam protection (hidden from humans) -->
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="hidden" aria-hidden="true">
+              <label>
+                Don't fill this out if you're human:
+                <input name="bot-field" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
+
+            <!-- Timestamp for bot detection -->
+            <input type="hidden" name="form-timestamp" id="form-timestamp" value="" />
+
+            <!-- Name -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-secondary-900 mb-2">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                minlength="2"
+                maxlength="100"
+                pattern="[A-Za-z\s\.\-']+"
+                autocomplete="name"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                placeholder="Your name"
+              />
+              <p class="text-xs text-gray-500 mt-1">Letters, spaces, and basic punctuation only</p>
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-secondary-900 mb-2">
+                Phone Number <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                minlength="10"
+                maxlength="15"
+                pattern="[\+]?[0-9\s\-]+"
+                autocomplete="tel"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                placeholder="+91 XXXXX XXXXX"
+              />
+              <p class="text-xs text-gray-500 mt-1">10-15 digits, may include + and spaces</p>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-secondary-900 mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                maxlength="254"
+                autocomplete="email"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+                placeholder="your@email.com"
+              />
+            </div>
+
+            <!-- Service -->
+            <div>
+              <label for="service" class="block text-sm font-medium text-secondary-900 mb-2">
+                Service Interested In
+              </label>
+              <select
+                id="service"
+                name="service"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+              >
+                <option value="">Select a service</option>
+                {services.map((service) => (
+                  <option value={service}>{service}</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="message" class="block text-sm font-medium text-secondary-900 mb-2">
+                Message <span class="text-red-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+                minlength="10"
+                maxlength="2000"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none"
+                placeholder="How can we help you?"
+              ></textarea>
+              <p class="text-xs text-gray-500 mt-1">10-2000 characters</p>
+            </div>
+
+            <!-- Error message display -->
+            <div id="form-error" class="hidden p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm"></div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              id="submit-btn"
+              class="btn-primary w-full"
+            >
+              Send Message
+            </button>
+
+            <p class="text-sm text-secondary-500 text-center">
+              We'll get back to you within 24 hours.
+            </p>
+          </form>
+        </div>
+
+        <script>
+          // Set timestamp when page loads (bot detection)
+          document.getElementById('form-timestamp').value = Date.now().toString();
+
+          // Form validation
+          const form = document.getElementById('contact-form');
+          const errorDiv = document.getElementById('form-error');
+          const submitBtn = document.getElementById('submit-btn');
+
+          form?.addEventListener('submit', function(e) {
+            const timestamp = parseInt(document.getElementById('form-timestamp').value);
+            const now = Date.now();
+
+            // Check if form was submitted too quickly (bot behavior)
+            if (now - timestamp < 3000) {
+              e.preventDefault();
+              errorDiv.textContent = 'Please wait a moment before submitting.';
+              errorDiv.classList.remove('hidden');
+              return false;
+            }
+
+            // Basic XSS prevention - check for script tags in inputs
+            const inputs = form.querySelectorAll('input, textarea');
+            for (const input of inputs) {
+              if (/<script|javascript:|on\w+=/i.test(input.value)) {
+                e.preventDefault();
+                errorDiv.textContent = 'Invalid characters detected. Please remove any special code.';
+                errorDiv.classList.remove('hidden');
+                return false;
+              }
+            }
+
+            // Disable button to prevent double submission
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+          });
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="bg-gray-100">
+    <div class="h-96">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.8889!2d85.883!3d20.4625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDI3JzQ1LjAiTiA4NcKwNTInNTguOCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="ZDentistry Location Map"
+      ></iframe>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,211 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import TestimonialCard from '@/components/home/TestimonialCard.astro';
+import CTASection from '@/components/home/CTASection.astro';
+import { getCollection } from 'astro:content';
+
+const team = await getCollection('team');
+const sortedTeam = team.sort((a, b) => a.data.order - b.data.order);
+
+const testimonials = await getCollection('testimonials');
+const sortedTestimonials = testimonials.sort((a, b) => a.data.order - b.data.order);
+
+const values = [
+  {
+    title: 'Respectful',
+    description: 'Expect clear and concise communication from our team of experts, who prioritize patient understanding and empowerment',
+  },
+  {
+    title: 'Professional',
+    description: 'At our practice, we combine our expertise with a genuine commitment to prioritize the individual needs and preferences of each patient',
+  },
+  {
+    title: 'Truly Local',
+    description: 'We are dedicated to providing exceptional dental care with a commitment to long-term patient relationships',
+  },
+  {
+    title: 'Always Learning',
+    description: 'Staying up-to-date with the latest advancements in dental technology and methods is a fundamental aspect of our commitment to delivering optimal care to each patient',
+  },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://zdentistry.in' },
+  { name: 'About', url: 'https://zdentistry.in/about/' },
+];
+---
+
+<PageLayout
+  title="About Us"
+  description="Learn about ZDentistry, Cuttack's premier dental practice. Meet Dr. Zuben Mohanty and our dedicated team committed to your dental health."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-secondary-900 leading-tight">
+            <span class="text-primary">Our dental clinic is dedicated to delivering superior customer service</span>
+            <br />with a focus on patient satisfaction!
+          </h1>
+          <p class="text-lg text-secondary-600 mt-6">
+            Experience you can trust, with a local touch
+          </p>
+          <a href="/contact/" class="btn-secondary mt-8 inline-block">
+            Let's Connect
+          </a>
+        </div>
+        <div class="relative">
+          <div class="aspect-square bg-primary/10 rounded-3xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        <span class="text-primary">Trust in our Expert Team's Commitment to Your Dental Health.</span>
+        <br />We prioritize your well-being and provide reliable care you can depend on.
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <p class="text-secondary-600">
+            Choose a trusted dental practice that's deeply rooted in your community and staffed by a team of caring professionals.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <p class="text-secondary-600">
+            Our enduring commitment to quality dental care ensures a lasting impact on our patients' health.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+          </div>
+          <p class="text-secondary-600">
+            Dr Zuben brings extensive experience in dentistry to our Cuttack-based practice, providing patients with top-notch care.
+          </p>
+          <a href="tel:+918984489929" class="btn-secondary mt-6 inline-block text-sm">
+            Reach us @ +91 89844 89929
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book In Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <div class="aspect-video bg-primary/10 rounded-3xl"></div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
+            <span class="text-primary">Book in, come in,</span><br />
+            and feel at home
+          </h2>
+          <p class="text-secondary-600 mb-6">
+            We understand that dental visits may not be everyone's favorite, but at our practice, we strive to change that. Our mission is to send you home with a healthy and confident smile, every time.
+          </p>
+          <a href="/book-appointment/" class="btn-secondary">
+            Contact us now!<br />+91 89844 89929 / +91 89844 69929
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet the Team -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+        Meet the Team
+      </h2>
+      <div class="max-w-2xl mx-auto">
+        {sortedTeam.map((member) => (
+          <div class="card text-center">
+            <div class="w-32 h-32 bg-primary/10 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <svg class="w-16 h-16 text-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-secondary-900">{member.data.name}</h3>
+            <p class="text-primary font-medium mt-1">{member.data.qualifications}</p>
+            <p class="text-secondary-600 mt-4 leading-relaxed">
+              {member.data.bio}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
+            <span class="text-primary">Thorough, competent</span><br />
+            and exceptional care
+          </h2>
+          <p class="text-secondary-600">
+            At ZDentistry, we recognize the importance of values in defining our practice. We are committed to providing a safe and welcoming environment, where each patient is valued and appreciated from the moment they step through our doors.
+          </p>
+        </div>
+        <div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {values.map((value) => (
+              <div class="bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="text-lg font-semibold text-secondary-900 mb-2">{value.title}</h3>
+                <p class="text-secondary-600 text-sm">{value.description}</p>
+              </div>
+            ))}
+          </div>
+          <a href="tel:+918984489929" class="btn-secondary mt-8 inline-block">
+            Call us now!<br />+91 89844 89929 / +91 89844 69929
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900">
+          What Our Friendly Patients Have to Say
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {sortedTestimonials.map((testimonial) => (
+          <TestimonialCard
+            name={testimonial.data.name}
+            role={testimonial.data.role}
+            location={testimonial.data.location}
+            text={testimonial.data.text}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</PageLayout>

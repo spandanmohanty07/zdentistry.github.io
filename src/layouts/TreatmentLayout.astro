@@ -1,0 +1,145 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import {
+  generateMedicalWebPageSchema,
+  generateBreadcrumbSchema,
+  generateFAQSchema,
+} from '@/lib/schema';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  category: 'dentistry' | 'maxillofacial';
+  categoryLabel: string;
+  faqs?: { question: string; answer: string }[];
+  relatedTreatments?: { title: string; slug: string; category: string }[];
+}
+
+const {
+  title,
+  description,
+  image,
+  category,
+  categoryLabel,
+  faqs = [],
+  relatedTreatments = [],
+} = Astro.props;
+
+const siteUrl = 'https://zdentistry.in';
+const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+const breadcrumbs = [
+  { name: 'Home', url: siteUrl },
+  { name: 'Treatments', url: `${siteUrl}/treatments/` },
+  { name: categoryLabel, url: `${siteUrl}/treatments/${category}/` },
+  { name: title, url: currentUrl },
+];
+
+const medicalPageSchema = generateMedicalWebPageSchema(title, description, currentUrl, title);
+const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+const structuredData = faqs.length > 0
+  ? [medicalPageSchema, breadcrumbSchema, generateFAQSchema(faqs)]
+  : [medicalPageSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb Navigation -->
+  <nav aria-label="Breadcrumb" class="bg-gray-50 py-4">
+    <div class="container-custom">
+      <ol class="flex items-center flex-wrap gap-2 text-sm">
+        {breadcrumbs.map((item, index) => (
+          <li class="flex items-center">
+            {index > 0 && (
+              <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            )}
+            {index === breadcrumbs.length - 1 ? (
+              <span class="text-gray-600">{item.name}</span>
+            ) : (
+              <a href={item.url} class="text-primary hover:text-primary-600">{item.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <slot />
+
+  <!-- FAQs Section -->
+  {faqs.length > 0 && (
+    <section class="section bg-gray-50">
+      <div class="container-custom">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+          Frequently Asked Questions
+        </h2>
+        <div class="max-w-3xl mx-auto space-y-4">
+          {faqs.map((faq, index) => (
+            <details class="bg-white rounded-xl p-6 shadow-sm group" open={index === 0}>
+              <summary class="flex justify-between items-center cursor-pointer list-none font-semibold text-lg">
+                {faq.question}
+                <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p class="mt-4 text-gray-600 leading-relaxed">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Related Treatments -->
+  {relatedTreatments.length > 0 && (
+    <section class="section">
+      <div class="container-custom">
+        <h2 class="text-3xl font-bold text-center mb-12">Related Treatments</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedTreatments.map((treatment) => (
+            <a
+              href={`/treatments/${treatment.category}/${treatment.slug}/`}
+              class="card hover:shadow-xl transition-shadow group"
+            >
+              <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                {treatment.title}
+              </h3>
+              <span class="link-arrow">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="section bg-primary text-white">
+    <div class="container-custom text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Get Started?
+      </h2>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+        Book your appointment today and take the first step towards better dental health.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/book-appointment/" class="btn-outline-white">Book Appointment</a>
+        <a href="tel:+918984489929" class="btn bg-white text-primary hover:bg-gray-100">
+          Call: +91 89844 89929
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

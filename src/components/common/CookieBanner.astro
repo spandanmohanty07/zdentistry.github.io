@@ -1,0 +1,44 @@
+---
+---
+
+<div id="cookie-banner" class="cookie-banner">
+  <div class="container-custom">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-center sm:text-left">
+        We use cookies to personalize content, ads and analyze site traffic.
+      </p>
+      <button
+        id="accept-cookies"
+        class="btn bg-white text-secondary-900 hover:bg-gray-100 text-sm whitespace-nowrap"
+      >
+        Accept
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function checkCookies() {
+    const cookieDate = localStorage.getItem('cookieDate');
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+
+    if (!cookieBanner || !acceptBtn) return;
+
+    // Show banner if no cookie consent or if it's older than 1 year
+    if (!cookieDate || (+cookieDate + 31536000000) < Date.now()) {
+      cookieBanner.classList.add('show');
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookieDate', String(Date.now()));
+      cookieBanner.classList.remove('show');
+    });
+  }
+
+  // Run on page load
+  checkCookies();
+
+  // Also run on view transitions (for Astro)
+  document.addEventListener('astro:page-load', checkCookies);
+</script>

@@ -1,0 +1,58 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { generateWebPageSchema, generateBreadcrumbSchema } from '@/lib/schema';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  breadcrumbs?: { name: string; url: string }[];
+}
+
+const { title, description, image, breadcrumbs } = Astro.props;
+
+const siteUrl = 'https://zdentistry.in';
+const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
+
+const webPageSchema = generateWebPageSchema(title, description, currentUrl);
+const breadcrumbSchema = breadcrumbs
+  ? generateBreadcrumbSchema(breadcrumbs)
+  : generateBreadcrumbSchema([
+      { name: 'Home', url: siteUrl },
+      { name: title, url: currentUrl },
+    ]);
+
+const structuredData = [webPageSchema, breadcrumbSchema];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  structuredData={structuredData}
+>
+  {breadcrumbs && breadcrumbs.length > 0 && (
+    <nav aria-label="Breadcrumb" class="bg-gray-50 py-4">
+      <div class="container-custom">
+        <ol class="flex items-center space-x-2 text-sm">
+          {breadcrumbs.map((item, index) => (
+            <li class="flex items-center">
+              {index > 0 && (
+                <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              )}
+              {index === breadcrumbs.length - 1 ? (
+                <span class="text-gray-600">{item.name}</span>
+              ) : (
+                <a href={item.url} class="text-primary hover:text-primary-600">{item.name}</a>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </nav>
+  )}
+
+  <slot />
+</BaseLayout>
