@@ -7,9 +7,10 @@ export interface Props {
   description: string;
   image?: string;
   breadcrumbs?: { name: string; url: string }[];
+  noindex?: boolean;
 }
 
-const { title, description, image, breadcrumbs } = Astro.props;
+const { title, description, image, breadcrumbs, noindex } = Astro.props;
 
 const siteUrl = 'https://zdentistry.in';
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
@@ -23,6 +24,12 @@ const breadcrumbSchema = breadcrumbs
     ]);
 
 const structuredData = [webPageSchema, breadcrumbSchema];
+
+// Convert absolute URLs to relative for navigation (works on any domain)
+const breadcrumbsNav = breadcrumbs?.map(item => ({
+  name: item.name,
+  url: item.url.replace(siteUrl, '') || '/'
+}));
 ---
 
 <BaseLayout
@@ -31,18 +38,18 @@ const structuredData = [webPageSchema, breadcrumbSchema];
   image={image}
   structuredData={structuredData}
 >
-  {breadcrumbs && breadcrumbs.length > 0 && (
+  {breadcrumbsNav && breadcrumbsNav.length > 0 && (
     <nav aria-label="Breadcrumb" class="bg-gray-50 py-4">
       <div class="container-custom">
         <ol class="flex items-center space-x-2 text-sm">
-          {breadcrumbs.map((item, index) => (
+          {breadcrumbsNav.map((item, index) => (
             <li class="flex items-center">
               {index > 0 && (
                 <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
               )}
-              {index === breadcrumbs.length - 1 ? (
+              {index === breadcrumbsNav.length - 1 ? (
                 <span class="text-gray-600">{item.name}</span>
               ) : (
                 <a href={item.url} class="text-primary hover:text-primary-600">{item.name}</a>

@@ -29,6 +29,15 @@ const {
 const siteUrl = 'https://zdentistry.in';
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
+// Breadcrumbs for navigation (relative URLs - work on any domain)
+const breadcrumbsNav = [
+  { name: 'Home', url: '/' },
+  { name: 'Treatments', url: '/treatments/' },
+  { name: categoryLabel, url: `/treatments/${category}/` },
+  { name: title, url: Astro.url.pathname },
+];
+
+// Breadcrumbs for structured data (absolute URLs - required for SEO)
 const breadcrumbs = [
   { name: 'Home', url: siteUrl },
   { name: 'Treatments', url: `${siteUrl}/treatments/` },
@@ -53,14 +62,14 @@ const structuredData = faqs.length > 0
   <nav aria-label="Breadcrumb" class="bg-gray-50 py-4">
     <div class="container-custom">
       <ol class="flex items-center flex-wrap gap-2 text-sm">
-        {breadcrumbs.map((item, index) => (
+        {breadcrumbsNav.map((item, index) => (
           <li class="flex items-center">
             {index > 0 && (
               <svg class="w-4 h-4 mx-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             )}
-            {index === breadcrumbs.length - 1 ? (
+            {index === breadcrumbsNav.length - 1 ? (
               <span class="text-gray-600">{item.name}</span>
             ) : (
               <a href={item.url} class="text-primary hover:text-primary-600">{item.name}</a>
