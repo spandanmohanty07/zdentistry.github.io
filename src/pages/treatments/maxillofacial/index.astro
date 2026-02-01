@@ -1,0 +1,93 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import TreatmentCard from '@/components/home/TreatmentCard.astro';
+import CTASection from '@/components/home/CTASection.astro';
+import { getCollection } from 'astro:content';
+
+const allTreatments = await getCollection('treatments');
+const maxillofacialTreatments = allTreatments
+  .filter(t => t.data.category === 'maxillofacial')
+  .sort((a, b) => a.data.order - b.data.order);
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://zdentistry.in' },
+  { name: 'Treatments', url: 'https://zdentistry.in/treatments/' },
+  { name: 'Maxillofacial Surgery', url: 'https://zdentistry.in/treatments/maxillofacial/' },
+];
+---
+
+<PageLayout
+  title="Maxillofacial Surgery Services"
+  description="Expert oral and maxillofacial surgery at ZDentistry, Cuttack. Specialized treatment for facial trauma, oral cancer, TMJ disorders, and advanced implants by Dr. Zuben Mohanty."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero Section -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-secondary-900">
+        <span class="text-primary">Maxillofacial</span> Surgery
+      </h1>
+      <p class="text-lg text-secondary-600 mt-4 max-w-2xl mx-auto">
+        Dr. Zuben's expertise in oral and maxillofacial surgery enables us to treat complex conditions affecting the face, jaw, and mouth with precision and care.
+      </p>
+    </div>
+  </section>
+
+  <!-- Treatments Grid -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {maxillofacialTreatments.map((treatment) => (
+          <TreatmentCard
+            title={treatment.data.title}
+            description={treatment.data.shortDescription}
+            href={`/treatments/maxillofacial/${treatment.slug.split('/').pop()}/`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Dr. Zuben -->
+  <section class="section bg-gray-50">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">Expert Maxillofacial Care</h2>
+        <p class="text-secondary-600 mb-8">
+          Dr. Zuben Mohanty is a qualified oral and maxillofacial surgeon with extensive training in treating complex conditions of the face, jaw, and oral cavity. His expertise covers everything from trauma reconstruction to advanced implant procedures.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Specialized Training</h3>
+            <p class="text-secondary-600">Advanced qualification in oral and maxillofacial surgery.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Advanced Technology</h3>
+            <p class="text-secondary-600">Modern surgical techniques and equipment for optimal outcomes.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Comprehensive Care</h3>
+            <p class="text-secondary-600">From diagnosis to recovery, we're with you every step.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</PageLayout>
