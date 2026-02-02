@@ -1,6 +1,6 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
-import TestimonialCard from '@/components/home/TestimonialCard.astro';
+import TestimonialCarousel from '@/components/home/TestimonialCarousel.astro';
 import CTASection from '@/components/home/CTASection.astro';
 import { getCollection } from 'astro:content';
 
@@ -57,7 +57,14 @@ const breadcrumbs = [
           </a>
         </div>
         <div class="relative">
-          <div class="aspect-square bg-primary/10 rounded-3xl"></div>
+          <div class="rounded-3xl overflow-hidden shadow-xl">
+            <img
+              src="/images/clinic-1.png"
+              alt="ZDentistry modern dental clinic in Cuttack"
+              class="w-full h-auto object-cover"
+              loading="eager"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -113,7 +120,14 @@ const breadcrumbs = [
     <div class="container-custom">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="order-2 lg:order-1">
-          <div class="aspect-video bg-primary/10 rounded-3xl"></div>
+          <div class="rounded-3xl overflow-hidden shadow-xl">
+            <img
+              src="/images/clinic-2.png"
+              alt="ZDentistry clinic interior with modern equipment"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
         <div class="order-1 lg:order-2">
           <h2 class="text-3xl md:text-4xl font-bold text-secondary-900 mb-6">
@@ -186,26 +200,15 @@ const breadcrumbs = [
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="section bg-white">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900">
-          What Our Friendly Patients Have to Say
-        </h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {sortedTestimonials.map((testimonial) => (
-          <TestimonialCard
-            name={testimonial.data.name}
-            role={testimonial.data.role}
-            location={testimonial.data.location}
-            text={testimonial.data.text}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
+  <!-- Testimonials Carousel -->
+  <TestimonialCarousel
+    testimonials={sortedTestimonials.map(t => ({
+      name: t.data.name,
+      role: t.data.role,
+      location: t.data.location,
+      text: t.data.text,
+    }))}
+  />
 
   <CTASection />
 </PageLayout>
