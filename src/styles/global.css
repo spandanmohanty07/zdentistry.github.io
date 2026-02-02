@@ -7,10 +7,16 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
   }
 
   body {
     @apply text-secondary-900 bg-white;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+    /* Better touch experience */
+    -webkit-tap-highlight-color: transparent;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -138,4 +144,94 @@
 
 .whatsapp-float svg {
   @apply w-8 h-8 text-white;
+}
+
+/* ================================
+   MOBILE OPTIMIZATIONS
+   ================================ */
+
+/* Improve touch targets for mobile */
+@media (max-width: 768px) {
+  /* Larger touch targets */
+  .btn {
+    @apply min-h-[48px] px-5;
+  }
+
+  /* Better spacing on mobile */
+  .section {
+    @apply py-12;
+  }
+
+  /* Smaller headings on mobile */
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  /* Cards with less padding on mobile */
+  .card {
+    @apply p-4;
+  }
+
+  /* Better text readability */
+  p, li {
+    @apply text-base;
+  }
+}
+
+/* Sticky mobile CTA */
+.mobile-cta-bar {
+  @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 z-40 md:hidden;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide elements on mobile */
+.hide-mobile {
+  @apply hidden md:block;
+}
+
+/* Show only on mobile */
+.show-mobile {
+  @apply block md:hidden;
+}
+
+/* Smooth scroll with offset for fixed header */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Better form inputs on mobile */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+}
+
+/* Horizontal scroll container for mobile */
+.scroll-x-mobile {
+  @apply flex overflow-x-auto gap-4 pb-4 -mx-4 px-4 md:grid md:overflow-visible md:mx-0 md:px-0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-x-mobile > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* Hide scrollbar but keep functionality */
+.scroll-x-mobile::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-x-mobile {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

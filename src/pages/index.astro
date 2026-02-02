@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/home/Hero.astro';
 import TreatmentCard from '@/components/home/TreatmentCard.astro';
-import TestimonialCard from '@/components/home/TestimonialCard.astro';
+import TestimonialCarousel from '@/components/home/TestimonialCarousel.astro';
 import CTASection from '@/components/home/CTASection.astro';
 import { getCollection } from 'astro:content';
 import { generateAggregateRatingSchema, generateReviewSchema } from '@/lib/schema';
@@ -132,26 +132,15 @@ const reviewSchema = generateReviewSchema(reviewData);
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="section bg-gray-50">
-    <div class="container-custom">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-secondary-900">
-          What Our Friendly Patients Have to Say
-        </h2>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {sortedTestimonials.map((testimonial) => (
-          <TestimonialCard
-            name={testimonial.data.name}
-            role={testimonial.data.role}
-            location={testimonial.data.location}
-            text={testimonial.data.text}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
+  <!-- Testimonials Carousel - Mobile Optimized -->
+  <TestimonialCarousel
+    testimonials={sortedTestimonials.map(t => ({
+      name: t.data.name,
+      role: t.data.role,
+      location: t.data.location,
+      text: t.data.text,
+    }))}
+  />
 
   <!-- Experience Section -->
   <section class="section bg-white">
