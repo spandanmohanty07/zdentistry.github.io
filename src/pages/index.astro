@@ -5,7 +5,7 @@ import TreatmentCard from '@/components/home/TreatmentCard.astro';
 import TestimonialCarousel from '@/components/home/TestimonialCarousel.astro';
 import CTASection from '@/components/home/CTASection.astro';
 import { getCollection } from 'astro:content';
-import { generateAggregateRatingSchema, generateReviewSchema } from '@/lib/schema';
+import { generateReviewsWithRatingSchema } from '@/lib/schema';
 
 // Get treatments
 const allTreatments = await getCollection('treatments');
@@ -24,20 +24,19 @@ const sortedTestimonials = testimonials.sort((a, b) => a.data.order - b.data.ord
 const title = "Best Dentist in Cuttack | #1 Dental Clinic Near You | ZDentistry CDA";
 const description = "Looking for the best dentist near you in Cuttack? ZDentistry is the top-rated dental clinic in CDA Sector-9, Cuttack. Expert dental implants, cosmetic dentistry & maxillofacial surgery. ⭐ 4.9/5 Rating. Book now: +91 89844 89929";
 
-// Generate review schema from testimonials
+// Generate combined reviews + aggregateRating schema (Google requires both together)
 const reviewData = sortedTestimonials.map(t => ({
   author: t.data.name,
   text: t.data.text,
   rating: 5,
 }));
-const aggregateRatingSchema = generateAggregateRatingSchema();
-const reviewSchema = generateReviewSchema(reviewData);
+const reviewsSchema = generateReviewsWithRatingSchema(reviewData);
 ---
 
 <BaseLayout
   title={title}
   description={description}
-  structuredData={[aggregateRatingSchema, reviewSchema]}
+  structuredData={reviewsSchema}
 >
   <Hero />
 

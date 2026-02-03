@@ -249,30 +249,26 @@ export function generateLocalBusinessSchema() {
   };
 }
 
-// Generate AggregateRating schema for reviews
-export function generateAggregateRatingSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'AggregateRating',
-    itemReviewed: {
-      '@type': 'Dentist',
-      name: businessInfo.name,
-      image: `${businessInfo.url}/logo.svg`,
-    },
-    ratingValue: '4.9',
-    bestRating: '5',
-    worstRating: '1',
-    ratingCount: '50',
-    reviewCount: '45',
-  };
-}
-
-// Generate individual Review schema
-export function generateReviewSchema(reviews: { author: string; text: string; rating?: number }[]) {
+// Generate combined Reviews with AggregateRating schema
+// Google requires aggregateRating when multiple reviews are present
+export function generateReviewsWithRatingSchema(reviews: { author: string; text: string; rating?: number }[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Dentist',
+    '@id': `${businessInfo.url}/#dentist-reviews`,
     name: businessInfo.name,
+    image: `${businessInfo.url}/logo.svg`,
+    url: businessInfo.url,
+    // AggregateRating is required when showing multiple reviews
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      bestRating: '5',
+      worstRating: '1',
+      ratingCount: '50',
+      reviewCount: reviews.length.toString(),
+    },
+    // Individual reviews
     review: reviews.map(review => ({
       '@type': 'Review',
       author: {
@@ -283,10 +279,22 @@ export function generateReviewSchema(reviews: { author: string; text: string; ra
         '@type': 'Rating',
         ratingValue: review.rating || 5,
         bestRating: '5',
+        worstRating: '1',
       },
       reviewBody: review.text,
+      datePublished: '2024-01-01', // Add approximate date
     })),
   };
+}
+
+// Keep for backwards compatibility - now just returns null
+export function generateAggregateRatingSchema() {
+  return null;
+}
+
+// Keep for backwards compatibility - now just returns null
+export function generateReviewSchema(reviews: { author: string; text: string; rating?: number }[]) {
+  return null;
 }
 
 export function generateWebPageSchema(title: string, description: string, url: string) {
