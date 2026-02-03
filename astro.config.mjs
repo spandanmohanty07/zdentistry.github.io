@@ -42,6 +42,9 @@ export default defineConfig({
         // Default
         return { ...item, priority: 0.5, changefreq: 'monthly' };
       },
+
+      // Use single sitemap.xml instead of sitemap-index for small sites
+      entryLimit: 50000,
     }),
   ],
   build: {
