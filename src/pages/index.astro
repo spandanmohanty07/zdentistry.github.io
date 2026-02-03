@@ -28,7 +28,8 @@ const description = "Looking for the best dentist near you in Cuttack? ZDentistr
 const reviewData = sortedTestimonials.map(t => ({
   author: t.data.name,
   text: t.data.text,
-  rating: 5,
+  rating: t.data.rating || 5,
+  date: t.data.date,
 }));
 const reviewsSchema = generateReviewsWithRatingSchema(reviewData);
 ---

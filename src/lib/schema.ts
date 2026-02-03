@@ -251,7 +251,7 @@ export function generateLocalBusinessSchema() {
 
 // Generate combined Reviews with AggregateRating schema
 // Google requires aggregateRating when multiple reviews are present
-export function generateReviewsWithRatingSchema(reviews: { author: string; text: string; rating?: number }[]) {
+export function generateReviewsWithRatingSchema(reviews: { author: string; text: string; rating?: number; date?: string }[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Dentist',
@@ -282,7 +282,7 @@ export function generateReviewsWithRatingSchema(reviews: { author: string; text:
         worstRating: '1',
       },
       reviewBody: review.text,
-      datePublished: '2024-01-01', // Add approximate date
+      datePublished: review.date || '2024-01-01',
     })),
   };
 }

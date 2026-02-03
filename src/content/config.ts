@@ -27,6 +27,8 @@ const testimonialsCollection = defineCollection({
     role: z.string(),
     location: z.string(),
     text: z.string(),
+    rating: z.number().default(5),
+    date: z.string().optional(),
     image: z.string().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(0),
