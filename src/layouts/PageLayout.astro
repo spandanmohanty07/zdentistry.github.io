@@ -12,7 +12,7 @@ export interface Props {
 
 const { title, description, image, breadcrumbs, noindex } = Astro.props;
 
-const siteUrl = 'https://zdentistry.in';
+const siteUrl = 'https://zdentistry.netlify.app';
 const currentUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
 const webPageSchema = generateWebPageSchema(title, description, currentUrl);

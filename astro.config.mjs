@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://zdentistry.in',
+  site: 'https://zdentistry.netlify.app',
   integrations: [
     tailwind(),
     sitemap({
@@ -16,7 +16,7 @@ export default defineConfig({
       // Custom settings for each page
       serialize: (item) => {
         // Homepage - highest priority
-        if (item.url === 'https://zdentistry.in/') {
+        if (item.url === 'https://zdentistry.netlify.app/') {
           return { ...item, priority: 1.0, changefreq: 'weekly' };
         }
         // Main sections - high priority

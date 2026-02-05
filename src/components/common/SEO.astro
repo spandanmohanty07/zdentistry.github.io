@@ -19,7 +19,7 @@ const {
   keywords,
 } = Astro.props;
 
-const siteUrl = 'https://zdentistry.in';
+const siteUrl = 'https://zdentistry.netlify.app';
 const fullTitle = title.includes('ZDentistry') ? title : `${title} | ZDentistry Cuttack`;
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
 const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
@@ -70,7 +70,7 @@ const metaKeywords = keywords || defaultKeywords;
 
 <!-- Business Contact Info -->
 <meta name="contact" content="+91 89844 89929" />
-<meta name="reply-to" content="contact@zdentistry.in" />
+<meta name="reply-to" content="zdentistrydentaloffice@gmail.com" />
 
 <!-- Additional SEO -->
 <meta name="author" content="Dr. Zuben Mohanty - ZDentistry" />

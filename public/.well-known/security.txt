@@ -2,17 +2,17 @@
 # https://securitytxt.org/
 
 # Contact for security issues
-Contact: mailto:contact@zdentistry.in
+Contact: mailto:zdentistrydentaloffice@gmail.com
 Contact: tel:+918984489929
 
 # Preferred language
 Preferred-Languages: en, hi
 
 # Security policy page (optional - create if needed)
-# Policy: https://zdentistry.in/security-policy/
+# Policy: https://zdentistry.netlify.app/security-policy/
 
 # Acknowledgments page (optional)
-# Acknowledgments: https://zdentistry.in/security-thanks/
+# Acknowledgments: https://zdentistry.netlify.app/security-thanks/
 
 # Expiry date - update annually
 Expires: 2027-02-01T00:00:00.000Z
