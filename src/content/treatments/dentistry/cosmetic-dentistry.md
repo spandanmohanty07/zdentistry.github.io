@@ -60,3 +60,5 @@ We believe cosmetic dentistry should enhance your natural beauty, not create an 
 5. **Follow-up**: Ensure your satisfaction
 
 Ready to love your smile? Contact ZDentistry today for a cosmetic dentistry consultation.
+
+Before any cosmetic procedure, we recommend a thorough [dental check-up](/treatments/dentistry/dental-checkup/) to ensure your teeth and gums are healthy. Missing teeth? [Dental implants](/treatments/dentistry/dental-implants/) combined with cosmetic work can completely transform your smile. For complex cases, our [advanced implant surgery](/treatments/maxillofacial/advanced-implants/) and [facial cosmetic procedures](/treatments/maxillofacial/facial-cosmetic/) offer even more options.

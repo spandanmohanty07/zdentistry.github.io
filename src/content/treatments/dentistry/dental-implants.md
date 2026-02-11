@@ -78,3 +78,5 @@ As a maxillofacial surgeon, Dr. Zuben can handle complex cases that other dentis
 ### Schedule Your Implant Consultation
 
 Ready to restore your smile with dental implants? Contact ZDentistry to schedule your consultation and learn how implants can transform your life.
+
+For complex cases requiring bone grafting or sinus lifts, explore our [advanced implant surgery](/treatments/maxillofacial/advanced-implants/) options. Combine your implants with [cosmetic dentistry](/treatments/dentistry/cosmetic-dentistry/) for a complete smile makeover. If you've lost teeth due to an accident, our [maxillofacial trauma](/treatments/maxillofacial/trauma/) team can help with comprehensive reconstruction.

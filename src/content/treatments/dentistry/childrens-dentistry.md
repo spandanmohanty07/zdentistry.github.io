@@ -78,3 +78,5 @@ We work hard to create a positive experience for every child:
 Book the kids in at the same time as your appointment for real convenience. We love seeing families together and making dental care a positive family experience.
 
 Schedule your child's appointment at ZDentistry today!
+
+While the kids are getting treated, why not schedule your own [dental check-up](/treatments/dentistry/dental-checkup/) at the same time? If your child needs a cavity filled, we use gentle, modern [tooth filling techniques](/treatments/dentistry/tooth-fillings/) with tooth-colored materials. For dental accidents during play, our [emergency dental care](/treatments/dentistry/emergency-dental/) team is here to help.

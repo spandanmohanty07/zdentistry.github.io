@@ -36,7 +36,7 @@ Our comprehensive dental check-up includes:
 - **Visual Examination**: Thorough inspection of teeth, gums, tongue, and soft tissues
 - **Digital X-rays**: When necessary, to detect hidden decay or bone loss
 - **Gum Health Assessment**: Checking for signs of periodontal disease
-- **Oral Cancer Screening**: Early detection saves lives
+- **Oral Cancer Screening**: Early detection saves lives — learn more about our [oral cancer screening services](/treatments/maxillofacial/oral-cancer/)
 - **Professional Cleaning**: Removal of plaque and tartar buildup
 - **Personalized Advice**: Tips for maintaining your oral health at home
 
@@ -53,3 +53,5 @@ Many dental problems develop silently without causing pain until they become sev
 ### Book Your Appointment Today
 
 Don't wait until you have a problem. Schedule your routine check-up at ZDentistry and take a proactive approach to your dental health. Our friendly team is here to make your visit comfortable and stress-free.
+
+If we find cavities during your check-up, our [tooth filling treatments](/treatments/dentistry/tooth-fillings/) can restore your teeth the same day. Looking to enhance your smile further? Explore our [cosmetic dentistry](/treatments/dentistry/cosmetic-dentistry/) options. We also offer [children's dentistry](/treatments/dentistry/childrens-dentistry/) to help your whole family maintain healthy smiles.

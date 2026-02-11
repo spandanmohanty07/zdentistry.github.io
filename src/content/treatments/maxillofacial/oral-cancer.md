@@ -97,3 +97,5 @@ Reduce your oral cancer risk:
 ### Schedule Your Screening
 
 Don't wait for symptoms. Regular oral cancer screening should be part of your routine dental care. Contact ZDentistry today to schedule your comprehensive examination.
+
+Oral cancer screening is included in every [dental check-up](/treatments/dentistry/dental-checkup/) at ZDentistry. If you notice any unusual [jaw or neck swellings](/treatments/maxillofacial/swellings/), get them evaluated promptly. After treatment, [facial cosmetic surgery](/treatments/maxillofacial/facial-cosmetic/) and [dental implants](/treatments/dentistry/dental-implants/) can help with reconstruction and rehabilitation.

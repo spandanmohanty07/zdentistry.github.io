@@ -57,3 +57,5 @@ Cavities don't have to mean visible metal in your smile. At ZDentistry, we use a
 ### Don't Wait on Cavities
 
 Untreated cavities only get worse over time and can lead to more serious (and expensive) problems like root canals or extractions. If you suspect you have a cavity, schedule an appointment today for a prompt evaluation.
+
+Regular [dental check-ups](/treatments/dentistry/dental-checkup/) can catch cavities early before they become painful. For severely damaged teeth, [dental implants](/treatments/dentistry/dental-implants/) offer a permanent replacement solution. Need urgent care? Our [emergency dental services](/treatments/dentistry/emergency-dental/) are here to help when you can't wait.

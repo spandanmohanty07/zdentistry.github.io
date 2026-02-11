@@ -109,3 +109,5 @@ Good candidates are:
 ### Schedule a Consultation
 
 Interested in learning how facial cosmetic surgery could help you? Contact ZDentistry to schedule a confidential consultation with Dr. Zuben.
+
+Combine facial cosmetic surgery with [cosmetic dentistry](/treatments/dentistry/cosmetic-dentistry/) for a complete transformation of your smile and facial profile. If jaw surgery is needed, [advanced implants](/treatments/maxillofacial/advanced-implants/) can restore missing teeth as part of your treatment plan. Patients who have experienced [facial trauma](/treatments/maxillofacial/trauma/) may also benefit from cosmetic reconstruction. For jaw joint issues affecting your bite, explore our [TMJ disorder treatment](/treatments/maxillofacial/tmj-disorders/).

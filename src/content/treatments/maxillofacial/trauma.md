@@ -85,3 +85,5 @@ Post-operative care includes physiotherapy, dietary guidance, and follow-up care
 
 If you or a loved one has suffered facial trauma, contact us immediately:
 - **Phone**: +91 89844 89929 / +91 89844 69929
+
+After emergency trauma treatment, you may need [dental implants](/treatments/dentistry/dental-implants/) or [advanced implant surgery](/treatments/maxillofacial/advanced-implants/) to replace lost teeth. Our [cosmetic dentistry](/treatments/dentistry/cosmetic-dentistry/) and [facial cosmetic surgery](/treatments/maxillofacial/facial-cosmetic/) services can help restore your appearance after injury. For general dental emergencies like toothaches or broken teeth, visit our [emergency dental care](/treatments/dentistry/emergency-dental/) page.

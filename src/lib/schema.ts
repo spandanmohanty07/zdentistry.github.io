@@ -183,9 +183,7 @@ export function generateLocalBusinessSchema() {
     },
     foundingDate: businessInfo.foundingDate,
     sameAs: [
-      // Add social media URLs here when available
-      // 'https://www.facebook.com/zdentistry',
-      // 'https://www.instagram.com/zdentistry',
+      'https://www.facebook.com/people/Z-Dentistry/100086377687319/',
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',

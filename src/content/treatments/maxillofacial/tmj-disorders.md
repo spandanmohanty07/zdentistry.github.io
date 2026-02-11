@@ -125,3 +125,5 @@ For severe cases not responding to conservative treatment:
 ### Get Help for Your Jaw Pain
 
 Don't suffer with jaw pain and dysfunction. Contact ZDentistry for a comprehensive TMJ evaluation and personalized treatment plan.
+
+TMJ issues are often identified during a routine [dental check-up](/treatments/dentistry/dental-checkup/). If your TMJ disorder is caused by jaw misalignment, [facial cosmetic surgery](/treatments/maxillofacial/facial-cosmetic/) (orthognathic surgery) may provide a long-term solution. Teeth grinding from TMJ can damage teeth — restorations like [tooth fillings](/treatments/dentistry/tooth-fillings/) or [dental implants](/treatments/dentistry/dental-implants/) can repair the damage.

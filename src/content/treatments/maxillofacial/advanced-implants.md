@@ -106,3 +106,5 @@ Every treatment plan is customized to your specific anatomy and goals.
 ### Schedule Your Consultation
 
 Been told you can't have implants? Get a second opinion at ZDentistry. Our advanced techniques may make implants possible for you.
+
+For straightforward cases, our [standard dental implants](/treatments/dentistry/dental-implants/) may be all you need. After implant placement, enhance your smile further with [cosmetic dentistry](/treatments/dentistry/cosmetic-dentistry/) treatments. Patients recovering from [facial trauma](/treatments/maxillofacial/trauma/) or [oral cancer treatment](/treatments/maxillofacial/oral-cancer/) often benefit from advanced implant reconstruction.

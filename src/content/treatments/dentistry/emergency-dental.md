@@ -73,3 +73,5 @@ While not all emergencies can be prevented, you can reduce your risk:
 Don't suffer in silence. Contact ZDentistry immediately for emergency dental care:
 - **Phone**: +91 89844 89929 / +91 89844 69929
 - **Hours**: Monday-Saturday 10AM-2PM & 5PM-9PM, Sunday 10AM-2PM
+
+After emergency treatment, you may need follow-up care such as [tooth fillings](/treatments/dentistry/tooth-fillings/) or [dental implants](/treatments/dentistry/dental-implants/) to fully restore your teeth. For serious facial injuries from accidents, Dr. Zuben provides expert [maxillofacial trauma care](/treatments/maxillofacial/trauma/). Prevent future emergencies with regular [dental check-ups](/treatments/dentistry/dental-checkup/).

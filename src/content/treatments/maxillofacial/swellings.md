@@ -106,3 +106,5 @@ Don't ignore facial or neck swellings. Contact us if you notice:
 ### Expert Evaluation Available
 
 Schedule a consultation at ZDentistry for proper evaluation and management of any facial or neck swelling.
+
+Dental infections causing swellings can often be prevented with regular [dental check-ups](/treatments/dentistry/dental-checkup/). If an infection has caused tooth damage, [tooth fillings](/treatments/dentistry/tooth-fillings/) or [dental implants](/treatments/dentistry/dental-implants/) may be needed to restore your teeth. For swellings that require cancer evaluation, see our [oral cancer screening](/treatments/maxillofacial/oral-cancer/) services.
