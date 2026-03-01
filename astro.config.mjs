@@ -11,7 +11,9 @@ export default defineConfig({
       // Exclude pages that shouldn't be indexed
       filter: (page) =>
         !page.includes('/contact-success') &&
-        !page.includes('/404'),
+        !page.includes('/404') &&
+        !page.includes('/privacy') &&
+        !page.includes('/terms'),
 
       // Custom settings for each page
       serialize: (item) => {
