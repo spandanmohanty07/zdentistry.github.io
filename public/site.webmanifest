@@ -1,0 +1,23 @@
+{
+  "name": "ZDentistry - Best Dental Clinic in Cuttack",
+  "short_name": "ZDentistry",
+  "description": "Top-rated dental clinic in CDA Sector-9, Cuttack. Expert dental implants, cosmetic dentistry & maxillofacial surgery by Dr. Zuben Mohanty (MDS).",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#017AFF",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
