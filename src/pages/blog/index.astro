@@ -1,0 +1,97 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort(
+  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+const breadcrumbs = [
+  { name: 'Home', url: 'https://zdentistry.netlify.app' },
+  { name: 'Dental Health Blog', url: 'https://zdentistry.netlify.app/blog/' },
+];
+---
+
+<PageLayout
+  title="Dental Health Blog | ZDentistry Cuttack | Tips & Guides by Dr. Zuben"
+  description="Expert dental health tips, guides, and news from ZDentistry — Cuttack's trusted dental clinic. Learn about root canal, implants, children's dentistry, and more from Dr. Zuben Mohanty (MDS)."
+  breadcrumbs={breadcrumbs}
+>
+  <!-- Hero -->
+  <section class="section bg-gradient-to-br from-primary-50 to-white">
+    <div class="container-custom text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-secondary-900">
+        Dental Health <span class="text-primary">Blog</span>
+      </h1>
+      <p class="text-lg text-secondary-600 mt-4 max-w-2xl mx-auto">
+        Expert dental tips, treatment guides, and oral health advice from Dr. Zuben Mohanty — Oral & Maxillofacial Surgeon at ZDentistry, Cuttack.
+      </p>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="section bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedPosts.map((post) => (
+          <article class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+            <div class="p-6">
+              <div class="flex gap-2 flex-wrap mb-3">
+                {post.data.tags?.slice(0, 2).map((tag) => (
+                  <span class="text-xs bg-primary/10 text-primary font-medium px-2 py-1 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h2 class="text-xl font-bold text-secondary-900 mb-3 leading-snug">
+                <a href={`/blog/${post.slug}/`} class="hover:text-primary transition-colors">
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="text-secondary-600 text-sm mb-4 leading-relaxed line-clamp-3">
+                {post.data.description}
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="text-xs text-secondary-400">
+                  <span>By {post.data.author}</span>
+                  <span class="mx-1">·</span>
+                  <time datetime={post.data.pubDate}>
+                    {new Date(post.data.pubDate).toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </time>
+                </div>
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class="text-primary font-semibold text-sm hover:underline"
+                >
+                  Read more →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {sortedPosts.length === 0 && (
+        <p class="text-center text-secondary-600 py-12">No posts yet. Check back soon!</p>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-gray-50">
+    <div class="container-custom text-center">
+      <h2 class="text-2xl font-bold text-secondary-900 mb-4">
+        Have a dental question? <span class="text-primary">Ask us directly.</span>
+      </h2>
+      <p class="text-secondary-600 mb-6 max-w-xl mx-auto">
+        Our team at ZDentistry in CDA Sector-9, Cuttack is happy to answer your questions and help you book an appointment.
+      </p>
+      <a href="/contact/" class="btn-secondary">Contact ZDentistry</a>
+    </div>
+  </section>
+</PageLayout>

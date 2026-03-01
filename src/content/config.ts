@@ -47,8 +47,23 @@ const teamCollection = defineCollection({
   }),
 });
 
+const blogCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.string(),
+    updatedDate: z.string().optional(),
+    author: z.string().default('Dr. Zuben Mohanty'),
+    image: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    featured: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   treatments: treatmentsCollection,
   testimonials: testimonialsCollection,
   team: teamCollection,
+  blog: blogCollection,
 };

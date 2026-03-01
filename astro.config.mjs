@@ -28,6 +28,10 @@ export default defineConfig({
         ) {
           return { ...item, priority: 0.9, changefreq: 'weekly' };
         }
+        // Blog index - high priority (fresh content signal)
+        if (item.url.endsWith('/blog/')) {
+          return { ...item, priority: 0.9, changefreq: 'weekly' };
+        }
         // Category pages - medium-high priority
         if (
           item.url.endsWith('/treatments/dentistry/') ||
@@ -37,6 +41,10 @@ export default defineConfig({
         }
         // Individual treatment pages - medium priority
         if (item.url.includes('/treatments/')) {
+          return { ...item, priority: 0.7, changefreq: 'monthly' };
+        }
+        // Blog posts - medium priority, updated frequently
+        if (item.url.includes('/blog/')) {
           return { ...item, priority: 0.7, changefreq: 'monthly' };
         }
         // Default

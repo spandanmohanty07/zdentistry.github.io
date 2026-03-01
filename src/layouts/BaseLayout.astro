@@ -4,7 +4,7 @@ import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
 import CookieBanner from '@/components/common/CookieBanner.astro';
 import MobileCTABar from '@/components/common/MobileCTABar.astro';
-import { generateLocalBusinessSchema } from '@/lib/schema';
+import { generateLocalBusinessSchema, generateWebSiteSchema, generatePhysicianSchema } from '@/lib/schema';
 import '@/styles/global.css';
 
 export interface Props {
@@ -28,11 +28,13 @@ const {
 } = Astro.props;
 
 const localBusinessSchema = generateLocalBusinessSchema();
+const webSiteSchema = generateWebSiteSchema();
+const physicianSchema = generatePhysicianSchema();
 const allStructuredData = structuredData
   ? Array.isArray(structuredData)
-    ? [localBusinessSchema, ...structuredData]
-    : [localBusinessSchema, structuredData]
-  : [localBusinessSchema];
+    ? [localBusinessSchema, webSiteSchema, physicianSchema, ...structuredData]
+    : [localBusinessSchema, webSiteSchema, physicianSchema, structuredData]
+  : [localBusinessSchema, webSiteSchema, physicianSchema];
 ---
 
 <!doctype html>

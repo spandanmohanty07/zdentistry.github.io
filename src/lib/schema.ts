@@ -30,8 +30,8 @@ export interface BusinessInfo {
 }
 
 export const businessInfo: BusinessInfo = {
-  name: 'ZDentistry - Best Dental Clinic in Cuttack | Dentist Near You',
-  alternateName: 'ZDentistry Cuttack, Best Dentist CDA Cuttack',
+  name: 'ZDentistry',
+  alternateName: 'Z Dentistry Cuttack, Best Dentist CDA Cuttack, ZDentistry Dental Clinic',
   description: 'Looking for the best dentist in Cuttack? ZDentistry is the #1 rated dental clinic in CDA Sector-9, Cuttack. Expert dental care including dental implants, cosmetic dentistry, emergency dental & maxillofacial surgery by Dr. Zuben Mohanty (MDS). Top 5 best dentist in Cuttack. Call +91 89844 89929.',
   url: 'https://zdentistry.netlify.app',
   telephone: ['+918984489929', '+918984469929'],
@@ -119,10 +119,28 @@ export function generateLocalBusinessSchema() {
       longitude: businessInfo.geo.longitude,
     },
     // Areas served - crucial for "near me" searches
-    areaServed: businessInfo.areasServed.map(area => ({
-      '@type': 'City',
-      name: area,
-    })),
+    // Major cities use City type, localities/sectors use Place type
+    areaServed: [
+      { '@type': 'City', name: 'Cuttack', '@id': 'https://www.wikidata.org/wiki/Q200773' },
+      { '@type': 'City', name: 'Bhubaneswar', '@id': 'https://www.wikidata.org/wiki/Q133557' },
+      { '@type': 'Place', name: 'CDA Sector 9, Cuttack' },
+      { '@type': 'Place', name: 'CDA Sector 6, Cuttack' },
+      { '@type': 'Place', name: 'CDA Sector 7, Cuttack' },
+      { '@type': 'Place', name: 'CDA Sector 8, Cuttack' },
+      { '@type': 'Place', name: 'CDA Sector 10, Cuttack' },
+      { '@type': 'Place', name: 'CDA, Cuttack' },
+      { '@type': 'Place', name: 'Bidanasi, Cuttack' },
+      { '@type': 'Place', name: 'Madhupatna, Cuttack' },
+      { '@type': 'Place', name: 'Buxi Bazaar, Cuttack' },
+      { '@type': 'Place', name: 'College Square, Cuttack' },
+      { '@type': 'Place', name: 'Ranihat, Cuttack' },
+      { '@type': 'Place', name: 'Chauliaganj, Cuttack' },
+      { '@type': 'Place', name: 'Jobra, Cuttack' },
+      { '@type': 'Place', name: 'Tulsipur, Cuttack' },
+      { '@type': 'Place', name: 'Khan Nagar, Cuttack' },
+      { '@type': 'Place', name: 'Malgodown, Cuttack' },
+      { '@type': 'Place', name: 'Link Road, Cuttack' },
+    ],
     // Service area radius
     serviceArea: {
       '@type': 'GeoCircle',
@@ -169,21 +187,30 @@ export function generateLocalBusinessSchema() {
         areaServed: 'IN',
       },
     ],
+    medicalSpecialty: ['Dentistry', 'Oral and Maxillofacial Surgery'],
+    hasMap: 'https://maps.google.com/?cid=14543613543671965462',
     founder: {
-      '@type': 'Person',
+      '@type': 'Physician',
+      '@id': `${businessInfo.url}/#physician`,
       name: businessInfo.founder.name,
       jobTitle: businessInfo.founder.jobTitle,
-      qualification: businessInfo.founder.qualification,
+      description: 'Dr. Zuben Mohanty is a qualified Oral & Maxillofacial Surgeon (MDS) and the founder of ZDentistry in Cuttack, Odisha. He specializes in dental implants, maxillofacial surgery, cosmetic dentistry, and comprehensive oral care.',
+      medicalSpecialty: 'Oral and Maxillofacial Surgery',
+      url: `${businessInfo.url}/about/`,
+      worksFor: {
+        '@id': `${businessInfo.url}/#organization`,
+      },
     },
     employee: {
-      '@type': 'Person',
+      '@type': 'Physician',
+      '@id': `${businessInfo.url}/#physician`,
       name: businessInfo.founder.name,
       jobTitle: businessInfo.founder.jobTitle,
-      qualification: businessInfo.founder.qualification,
     },
     foundingDate: businessInfo.foundingDate,
     sameAs: [
       'https://www.facebook.com/people/Z-Dentistry/100086377687319/',
+      'https://g.page/r/CRZ6N6fvkOdnEAE',
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -367,5 +394,109 @@ export function generateFAQSchema(faqs: { question: string; answer: string }[]) 
         text: faq.answer,
       },
     })),
+  };
+}
+
+export function generateWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${businessInfo.url}/#website`,
+    name: 'ZDentistry - Dental Clinic in Cuttack',
+    url: businessInfo.url,
+    description: 'Best dental clinic in Cuttack, Odisha. ZDentistry offers comprehensive dental care, dental implants, cosmetic dentistry, and maxillofacial surgery by Dr. Zuben Mohanty (MDS).',
+    publisher: {
+      '@id': `${businessInfo.url}/#organization`,
+    },
+    inLanguage: 'en-IN',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${businessInfo.url}/treatments/?search={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+}
+
+export function generatePhysicianSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Physician',
+    '@id': `${businessInfo.url}/#physician`,
+    name: 'Dr. Zuben Mohanty',
+    givenName: 'Zuben',
+    familyName: 'Mohanty',
+    honorificPrefix: 'Dr.',
+    honorificSuffix: 'MDS',
+    jobTitle: 'Oral & Maxillofacial Surgeon',
+    description: 'Dr. Zuben Mohanty is a qualified Oral & Maxillofacial Surgeon (MDS) based in Cuttack, Odisha. He is the founder and lead dentist at ZDentistry, specializing in dental implants, cosmetic dentistry, maxillofacial surgery, facial trauma, TMJ disorders, and oral cancer screening.',
+    medicalSpecialty: [
+      { '@type': 'MedicalSpecialty', name: 'Dentistry' },
+      { '@type': 'MedicalSpecialty', name: 'Oral and Maxillofacial Surgery' },
+    ],
+    url: `${businessInfo.url}/about/`,
+    worksFor: {
+      '@id': `${businessInfo.url}/#organization`,
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.streetAddress,
+      addressLocality: businessInfo.address.addressLocality,
+      addressRegion: businessInfo.address.addressRegion,
+      postalCode: businessInfo.address.postalCode,
+      addressCountry: businessInfo.address.addressCountry,
+    },
+    telephone: businessInfo.telephone[0],
+    availableService: [
+      { '@type': 'MedicalTherapy', name: 'Dental Implants' },
+      { '@type': 'MedicalTherapy', name: 'Cosmetic Dentistry' },
+      { '@type': 'MedicalTherapy', name: 'Root Canal Treatment' },
+      { '@type': 'MedicalTherapy', name: 'Maxillofacial Surgery' },
+      { '@type': 'MedicalTherapy', name: 'Oral Cancer Screening' },
+      { '@type': 'MedicalTherapy', name: 'TMJ Disorder Treatment' },
+    ],
+    knowsAbout: [
+      'Dental Implants', 'Cosmetic Dentistry', 'Maxillofacial Surgery',
+      'Root Canal Treatment', 'Oral Cancer Screening', 'TMJ Disorders',
+      'Facial Trauma Surgery', 'Dental Check-up', 'Teeth Whitening',
+      'Children Dentistry', 'Emergency Dental Care',
+    ],
+    alumniOf: {
+      '@type': 'EducationalOrganization',
+      name: 'Dental College (MDS - Oral & Maxillofacial Surgery)',
+    },
+  };
+}
+
+export function generateArticleSchema(
+  title: string,
+  description: string,
+  url: string,
+  datePublished: string,
+  dateModified: string,
+  image?: string
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: description,
+    url: url,
+    datePublished: datePublished,
+    dateModified: dateModified,
+    author: {
+      '@id': `${businessInfo.url}/#physician`,
+    },
+    publisher: {
+      '@id': `${businessInfo.url}/#organization`,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url,
+    },
+    ...(image && { image: image.startsWith('http') ? image : `${businessInfo.url}${image}` }),
+    inLanguage: 'en-IN',
   };
 }
