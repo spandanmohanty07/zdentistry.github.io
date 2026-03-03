@@ -125,4 +125,4 @@ If you are experiencing tooth pain, don't wait until it gets worse. Early treatm
 📞 +91 89844 89929 | +91 89844 69929
 🕐 Mon–Sat: 10 AM–2 PM & 5 PM–9 PM | Sun: 10 AM–2 PM
 
-[Book an Appointment](/book-appointment/) | [Contact Us](/contact/) | [View All Treatments](/treatments/)
+[Book an Appointment](/book-appointment/) | [Root Canal Treatment Details](/treatments/dentistry/root-canal/) | [View All Treatments](/treatments/)
