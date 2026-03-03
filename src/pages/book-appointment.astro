@@ -214,3 +214,13 @@ const CALENDLY_ENABLED = false; // Set to true once you have your Calendly accou
     </div>
   </section>
 </PageLayout>
+
+<style>
+  /* Reduce Calendly widget height on mobile so it doesn't overflow the viewport */
+  @media (max-width: 767px) {
+    .calendly-inline-widget {
+      height: 520px !important;
+      min-width: 100% !important;
+    }
+  }
+</style>
