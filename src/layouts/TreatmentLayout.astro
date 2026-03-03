@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import {
   generateMedicalWebPageSchema,
+  generateMedicalProcedureSchema,
   generateBreadcrumbSchema,
   generateFAQSchema,
 } from '@/lib/schema';
@@ -47,9 +48,10 @@ const breadcrumbs = [
 
 const medicalPageSchema = generateMedicalWebPageSchema(title, description, currentUrl, title);
 const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+const procedureSchema = generateMedicalProcedureSchema(title, description, currentUrl, category);
 const structuredData = faqs.length > 0
-  ? [medicalPageSchema, breadcrumbSchema, generateFAQSchema(faqs)]
-  : [medicalPageSchema, breadcrumbSchema];
+  ? [medicalPageSchema, breadcrumbSchema, procedureSchema, generateFAQSchema(faqs)]
+  : [medicalPageSchema, breadcrumbSchema, procedureSchema];
 ---
 
 <BaseLayout

@@ -470,6 +470,44 @@ export function generatePhysicianSchema() {
   };
 }
 
+export function generateMedicalProcedureSchema(
+  name: string,
+  description: string,
+  url: string,
+  category: 'dentistry' | 'maxillofacial'
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: name,
+    description: description,
+    url: url,
+    provider: {
+      '@id': `${businessInfo.url}/#organization`,
+    },
+    performer: {
+      '@id': `${businessInfo.url}/#physician`,
+    },
+    availableAtOrFrom: {
+      '@type': 'MedicalClinic',
+      name: businessInfo.name,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: businessInfo.address.streetAddress,
+        addressLocality: businessInfo.address.addressLocality,
+        addressRegion: businessInfo.address.addressRegion,
+        postalCode: businessInfo.address.postalCode,
+        addressCountry: businessInfo.address.addressCountry,
+      },
+      telephone: businessInfo.telephone[0],
+    },
+    relevantSpecialty: {
+      '@type': 'MedicalSpecialty',
+      name: category === 'maxillofacial' ? 'Oral and Maxillofacial Surgery' : 'Dentistry',
+    },
+  };
+}
+
 export function generateArticleSchema(
   title: string,
   description: string,
