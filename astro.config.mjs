@@ -34,6 +34,14 @@ export default defineConfig({
         if (item.url.endsWith('/blog/')) {
           return { ...item, priority: 0.9, changefreq: 'weekly' };
         }
+        // Local landing page - very high priority for local SEO
+        if (item.url.endsWith('/dentist-in-cda-cuttack/')) {
+          return { ...item, priority: 0.95, changefreq: 'monthly' };
+        }
+        // Testimonials page - high priority for E-E-A-T
+        if (item.url.endsWith('/testimonials/')) {
+          return { ...item, priority: 0.8, changefreq: 'weekly' };
+        }
         // Category pages - medium-high priority
         if (
           item.url.endsWith('/treatments/dentistry/') ||
