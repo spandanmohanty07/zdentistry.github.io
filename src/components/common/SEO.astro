@@ -34,7 +34,7 @@ const metaKeywords = keywords || defaultKeywords;
 <title>{fullTitle}</title>
 <meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalUrl} />
