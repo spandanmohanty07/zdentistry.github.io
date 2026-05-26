@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-const siteUrl = 'https://zdentistry.netlify.app';
+const siteUrl = 'https://zdentistry.in';
 const postUrl = `${siteUrl}/blog/${post.slug}/`;
 
 const articleSchema = generateArticleSchema(

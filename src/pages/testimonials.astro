@@ -7,7 +7,7 @@ import { generateReviewsWithRatingSchema, generateBreadcrumbSchema } from '@/lib
 const testimonials = await getCollection('testimonials');
 const sortedTestimonials = testimonials.sort((a, b) => a.data.order - b.data.order);
 
-const siteUrl = 'https://zdentistry.netlify.app';
+const siteUrl = 'https://zdentistry.in';
 const pageUrl = `${siteUrl}/testimonials/`;
 
 const title = "Patient Reviews | ZDentistry — Best Dentist in CDA Cuttack";

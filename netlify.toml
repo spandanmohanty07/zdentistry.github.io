@@ -5,6 +5,13 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Redirect old .netlify.app domain to custom domain (preserves SEO link equity)
+[[redirects]]
+  from = "https://zdentistry.netlify.app/*"
+  to = "https://zdentistry.in/:splat"
+  status = 301
+  force = true
+
 # Redirects for old URLs
 [[redirects]]
   from = "/index.html"

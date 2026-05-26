@@ -33,7 +33,7 @@ export const businessInfo: BusinessInfo = {
   name: 'ZDentistry',
   alternateName: 'Z Dentistry Cuttack, Best Dentist CDA Cuttack, ZDentistry Dental Clinic',
   description: 'Looking for the best dentist in Cuttack? ZDentistry is the #1 rated dental clinic in CDA Sector-9, Cuttack. Expert dental care including dental implants, cosmetic dentistry, emergency dental & maxillofacial surgery by Dr. Zuben Mohanty (MDS). Top 5 best dentist in Cuttack. Call +91 89844 89929.',
-  url: 'https://zdentistry.netlify.app',
+  url: 'https://zdentistry.in',
   telephone: ['+918984489929', '+918984469929'],
   email: 'zdentistrydentaloffice@gmail.com',
   address: {

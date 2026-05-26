@@ -19,7 +19,7 @@ const {
   keywords,
 } = Astro.props;
 
-const siteUrl = 'https://zdentistry.netlify.app';
+const siteUrl = 'https://zdentistry.in';
 const fullTitle = title.includes('ZDentistry') ? title : `${title} | ZDentistry Cuttack`;
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
 const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
