@@ -5,12 +5,195 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Redirect www → non-www (fixes "Google chose different canonical" in GSC)
+# Must come FIRST so it applies before any other redirect rules
+[[redirects]]
+  from = "https://www.zdentistry.in/*"
+  to = "https://zdentistry.in/:splat"
+  status = 301
+  force = true
+
 # Redirect old .netlify.app domain to custom domain (preserves SEO link equity)
 [[redirects]]
   from = "https://zdentistry.netlify.app/*"
   to = "https://zdentistry.in/:splat"
   status = 301
   force = true
+
+# Redirect /sitemap.xml → /sitemap-index.xml so GSC and crawlers find the sitemap
+# regardless of which URL they try (Astro generates sitemap-index.xml, not sitemap.xml)
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
+  force = true
+
+# Force trailing slashes on all HTML pages (fixes duplicate content for /about vs /about/)
+# Listed explicitly to avoid accidentally redirecting static assets (.xml, .txt, .png etc.)
+[[redirects]]
+  from = "/about"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments"
+  to = "/treatments/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/dentistry"
+  to = "/treatments/dentistry/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/maxillofacial"
+  to = "/treatments/maxillofacial/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/dentistry/dental-checkup"
+  to = "/treatments/dentistry/dental-checkup/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/dentistry/root-canal"
+  to = "/treatments/dentistry/root-canal/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/dentistry/dental-implants"
+  to = "/treatments/dentistry/dental-implants/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/dentistry/tooth-fillings"
+  to = "/treatments/dentistry/tooth-fillings/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/dentistry/cosmetic-dentistry"
+  to = "/treatments/dentistry/cosmetic-dentistry/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/dentistry/emergency-dental"
+  to = "/treatments/dentistry/emergency-dental/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/dentistry/childrens-dentistry"
+  to = "/treatments/dentistry/childrens-dentistry/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/maxillofacial/advanced-implants"
+  to = "/treatments/maxillofacial/advanced-implants/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/maxillofacial/facial-cosmetic"
+  to = "/treatments/maxillofacial/facial-cosmetic/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/maxillofacial/oral-cancer"
+  to = "/treatments/maxillofacial/oral-cancer/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/maxillofacial/swellings"
+  to = "/treatments/maxillofacial/swellings/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/maxillofacial/tmj-disorders"
+  to = "/treatments/maxillofacial/tmj-disorders/"
+  status = 301
+
+[[redirects]]
+  from = "/treatments/maxillofacial/trauma"
+  to = "/treatments/maxillofacial/trauma/"
+  status = 301
+
+[[redirects]]
+  from = "/book-appointment"
+  to = "/book-appointment/"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/root-canal-treatment-cuttack"
+  to = "/blog/root-canal-treatment-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/dental-implants-cost-cuttack"
+  to = "/blog/dental-implants-cost-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/childrens-dental-care-cuttack"
+  to = "/blog/childrens-dental-care-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/emergency-dentist-cuttack"
+  to = "/blog/emergency-dentist-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/teeth-cleaning-cuttack"
+  to = "/blog/teeth-cleaning-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/gum-disease-treatment-cuttack"
+  to = "/blog/gum-disease-treatment-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/wisdom-tooth-removal-cuttack"
+  to = "/blog/wisdom-tooth-removal-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/dental-crowns-cuttack"
+  to = "/blog/dental-crowns-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/teeth-whitening-cuttack"
+  to = "/blog/teeth-whitening-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/dentist-in-cda-cuttack"
+  to = "/dentist-in-cda-cuttack/"
+  status = 301
+
+[[redirects]]
+  from = "/testimonials"
+  to = "/testimonials/"
+  status = 301
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy/"
+  status = 301
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms/"
+  status = 301
 
 # Redirects for old URLs
 [[redirects]]
@@ -24,9 +207,6 @@
   to = "/about/"
   status = 301
   force = true
-
-# 404 fallback - only for pages that don't exist
-# Note: Removed trailing slash redirect as it conflicts with Astro's directory format
 
 # ============================================
 # SECURITY HEADERS
