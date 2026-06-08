@@ -176,6 +176,11 @@
   status = 301
 
 [[redirects]]
+  from = "/blog/sensitive-teeth-cuttack"
+  to = "/blog/sensitive-teeth-cuttack/"
+  status = 301
+
+[[redirects]]
   from = "/dentist-in-cda-cuttack"
   to = "/dentist-in-cda-cuttack/"
   status = 301
