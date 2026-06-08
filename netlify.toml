@@ -181,6 +181,11 @@
   status = 301
 
 [[redirects]]
+  from = "/blog/bleeding-gums-cuttack"
+  to = "/blog/bleeding-gums-cuttack/"
+  status = 301
+
+[[redirects]]
   from = "/dentist-in-cda-cuttack"
   to = "/dentist-in-cda-cuttack/"
   status = 301
