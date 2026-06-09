@@ -269,7 +269,7 @@ export function generateLocalBusinessSchema() {
     // Keywords for search engines - targeting top search terms
     keywords: 'dentist near me, dental clinic near me, best dental clinic in cuttack, best dentist in cuttack, dental clinic cuttack, best dentist in cda cuttack, 5 best dentist in cuttack, top dentist cuttack, dental implants Cuttack, maxillofacial surgeon Cuttack, emergency dentist Cuttack',
     // Additional names for search
-    additionalType: 'http://www.productontology.org/id/Dentistry',
+    additionalType: 'https://www.productontology.org/id/Dentistry',
     slogan: 'Best Dental Clinic in Cuttack - Your Trusted Dentist Near You',
   };
 }
