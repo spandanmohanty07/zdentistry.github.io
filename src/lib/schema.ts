@@ -94,7 +94,7 @@ export function generateLocalBusinessSchema() {
     name: businessInfo.name,
     alternateName: businessInfo.alternateName,
     description: businessInfo.description,
-    url: businessInfo.url,
+    url: `${businessInfo.url}/`,
     telephone: businessInfo.telephone[0],
     image: [
       `${businessInfo.url}/images/clinic-1.png`,
@@ -283,7 +283,7 @@ export function generateReviewsWithRatingSchema(reviews: { author: string; text:
     '@id': `${businessInfo.url}/#dentist-reviews`,
     name: businessInfo.name,
     image: `${businessInfo.url}/logo.svg`,
-    url: businessInfo.url,
+    url: `${businessInfo.url}/`,
     // AggregateRating is required when showing multiple reviews
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -332,7 +332,7 @@ export function generateWebPageSchema(title: string, description: string, url: s
     isPartOf: {
       '@type': 'WebSite',
       name: 'ZDentistry',
-      url: businessInfo.url,
+      url: `${businessInfo.url}/`,
     },
     provider: {
       '@id': `${businessInfo.url}/#organization`,
@@ -403,7 +403,7 @@ export function generateWebSiteSchema() {
     '@type': 'WebSite',
     '@id': `${businessInfo.url}/#website`,
     name: 'ZDentistry - Dental Clinic in Cuttack',
-    url: businessInfo.url,
+    url: `${businessInfo.url}/`,
     description: 'Best dental clinic in Cuttack, Odisha. ZDentistry offers comprehensive dental care, dental implants, cosmetic dentistry, and maxillofacial surgery by Dr. Zuben Mohanty (MDS).',
     publisher: {
       '@id': `${businessInfo.url}/#organization`,
