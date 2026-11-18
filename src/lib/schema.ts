@@ -44,8 +44,8 @@ export const businessInfo: BusinessInfo = {
     addressCountry: 'IN',
   },
   geo: {
-    latitude: 20.4625,
-    longitude: 85.8830,
+    latitude: 20.479833,
+    longitude: 85.833472,
   },
   openingHours: [
     'Mo-Sa 10:00-14:00',
@@ -281,17 +281,17 @@ export function generateReviewsWithRatingSchema(reviews: { author: string; text:
   return {
     '@context': 'https://schema.org',
     '@type': 'Dentist',
-    '@id': `${businessInfo.url}/#dentist-reviews`,
+    '@id': `${businessInfo.url}/#organization`,
     name: businessInfo.name,
     image: `${businessInfo.url}/logo.svg`,
     url: `${businessInfo.url}/`,
     // AggregateRating is required when showing multiple reviews
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
+      ratingValue: '4.8',
       bestRating: '5',
       worstRating: '1',
-      ratingCount: '50',
+      ratingCount: '103',
       reviewCount: reviews.length.toString(),
     },
     // Individual reviews
