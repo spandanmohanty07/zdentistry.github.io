@@ -50,6 +50,11 @@ const allStructuredData = structuredData
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#017AFF" />
 
+    <!-- Enable animations before first paint (avoids a flash), unless the user prefers reduced motion -->
+    <script is:inline>
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+    </script>
+
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -86,5 +91,9 @@ const allStructuredData = structuredData
     <Footer />
     <CookieBanner />
     <MobileCTABar />
+
+    <script>
+      import '@/scripts/motion';
+    </script>
   </body>
 </html>

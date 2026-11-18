@@ -98,33 +98,18 @@
   }
 }
 
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
-  }
+/* Hero start state for GSAP (src/scripts/motion.ts). Only applied when .motion is set,
+   and the delayed fallback reveals the text if the script ever fails to run. */
+.motion [data-hero-text] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: hero-fallback 0s 2.5s forwards;
+}
 
-  .animate-slide-up {
-    animation: slideUp 0.5s ease-out forwards;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+@keyframes hero-fallback {
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
