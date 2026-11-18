@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "24"
 
 # Redirect www → non-www (fixes "Google chose different canonical" in GSC)
 # Must come FIRST so it applies before any other redirect rules
