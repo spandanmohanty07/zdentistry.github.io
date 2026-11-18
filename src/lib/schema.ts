@@ -211,6 +211,7 @@ export function generateLocalBusinessSchema() {
     sameAs: [
       'https://www.facebook.com/people/Z-Dentistry/100086377687319/',
       'https://g.page/r/CRZ6N6fvkOdnEAE',
+      'https://www.justdial.com/Cuttack/Z-Dentistry-Near-Jugal-Kishore-Park-Cda-Sector-9/0671PX671-X671-230305145304-A1S1_BZDET',
     ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
