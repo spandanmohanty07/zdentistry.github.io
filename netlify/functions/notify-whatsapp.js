@@ -9,7 +9,7 @@
 //    - WHATSAPP_PHONE: Your WhatsApp number (e.g., 918984489929)
 //    - WHATSAPP_API_KEY: The API key from CallMeBot
 
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return {
